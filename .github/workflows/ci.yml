@@ -6,12 +6,12 @@ on:
       - main
       - master
     paths-ignore:
-      - "**.md"
+      - '**.md'
       - .editorconfig
       - .gitignore
   pull_request:
     paths-ignore:
-      - "**.md"
+      - '**.md'
       - .editorconfig
       - .gitignore
 
@@ -24,9 +24,7 @@ jobs:
     uses: ./.github/workflows/lint.yml
   typechecking:
     uses: ./.github/workflows/typechecking.yml
-  tests:
-    uses: ./.github/workflows/tests.yml
   draft_release:
     if: github.event_name == 'push' && github.ref_name == 'main'
-    needs: [typechecking, tests]
+    needs: [typechecking]
     uses: ./.github/workflows/release.yml
