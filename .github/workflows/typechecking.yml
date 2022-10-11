@@ -20,7 +20,5 @@ jobs:
           cache: 'yarn'
 
       - run: yarn install --frozen-lockfile
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - run: yarn typecheck --if-present
+      - run: yarn typecheck
