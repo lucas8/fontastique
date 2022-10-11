@@ -1,9 +1,9 @@
 /* eslint-env node */
 
-import { chrome } from "../../.electron-vendors.cache.json";
-import { join } from "path";
-import react from "@vitejs/plugin-react";
-import { renderer } from "unplugin-auto-expose";
+import { chrome } from '../../.electron-vendors.cache.json';
+import { join } from 'path';
+import react from '@vitejs/plugin-react';
+import { renderer } from 'unplugin-auto-expose';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -16,10 +16,10 @@ const config = {
   root: PACKAGE_ROOT,
   resolve: {
     alias: {
-      "/@/": join(PACKAGE_ROOT, "src") + "/",
+      '/@/': join(PACKAGE_ROOT, 'src') + '/',
     },
   },
-  base: "",
+  base: '',
   server: {
     fs: {
       strict: true,
@@ -28,21 +28,21 @@ const config = {
   build: {
     sourcemap: true,
     target: `chrome${chrome}`,
-    outDir: "dist",
-    assetsDir: ".",
+    outDir: 'dist',
+    assetsDir: '.',
     rollupOptions: {
-      input: join(PACKAGE_ROOT, "index.html"),
+      input: join(PACKAGE_ROOT, 'index.html'),
     },
     emptyOutDir: true,
     reportCompressedSize: false,
   },
   test: {
-    environment: "happy-dom",
+    environment: 'happy-dom',
   },
   plugins: [
     react(),
     renderer.vite({
-      preloadEntry: join(PACKAGE_ROOT, "../preload/src/index.ts"),
+      preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
     }),
   ],
 };

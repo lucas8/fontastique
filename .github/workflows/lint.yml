@@ -7,7 +7,7 @@ concurrency:
 
 defaults:
   run:
-    shell: "bash"
+    shell: 'bash'
 
 jobs:
   eslint:
@@ -17,8 +17,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          cache: "yarn"
+          cache: 'yarn'
 
       - run: yarn ci
 
-      - run: yarn lint --if-present
+      - run: yarn lint

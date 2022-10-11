@@ -1,6 +1,6 @@
 // TODO: Refactor this action
 
-const { execSync } = require("child_process");
+const { execSync } = require('child_process');
 
 /**
  * Gets the value of an input.  The value is also trimmed.
@@ -10,7 +10,7 @@ const { execSync } = require("child_process");
  * @returns   string
  */
 function getInput(name, options) {
-  const val = process.env[`INPUT_${name.replace(/ /g, "_").toUpperCase()}`] || "";
+  const val = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
   if (options && options.required && !val) {
     throw new Error(`Input required and not supplied: ${name}`);
   }
@@ -18,10 +18,10 @@ function getInput(name, options) {
   return val.trim();
 }
 
-const START_FROM = getInput("from");
-const END_TO = getInput("to");
-const INCLUDE_COMMIT_BODY = getInput("include-commit-body") === "true";
-const INCLUDE_ABBREVIATED_COMMIT = getInput("include-abbreviated-commit") === "true";
+const START_FROM = getInput('from');
+const END_TO = getInput('to');
+const INCLUDE_COMMIT_BODY = getInput('include-commit-body') === 'true';
+const INCLUDE_ABBREVIATED_COMMIT = getInput('include-abbreviated-commit') === 'true';
 
 /**
  * @typedef {Object} ICommit
@@ -39,14 +39,14 @@ const INCLUDE_ABBREVIATED_COMMIT = getInput("include-abbreviated-commit") === "t
  * Used to split data in the commit line
  * @type {string}
  */
-const commitInnerSeparator = "~~~~";
+const commitInnerSeparator = '~~~~';
 
 /**
  * Any unique string that is guaranteed not to be used in committee text.
  * Used to split each commit line
  * @type {string}
  */
-const commitOuterSeparator = "₴₴₴₴";
+const commitOuterSeparator = '₴₴₴₴';
 
 /**
  * Commit data to be obtained.
@@ -55,40 +55,40 @@ const commitOuterSeparator = "₴₴₴₴";
  * @see https://git-scm.com/docs/git-log#Documentation/git-log.txt-emnem
  */
 const commitDataMap = new Map([
-  ["subject", "%s"], // Required
+  ['subject', '%s'], // Required
 ]);
 
 if (INCLUDE_COMMIT_BODY) {
-  commitDataMap.set("body", "%b");
+  commitDataMap.set('body', '%b');
 }
 
 if (INCLUDE_ABBREVIATED_COMMIT) {
-  commitDataMap.set("abbreviated_commit", "%h");
+  commitDataMap.set('abbreviated_commit', '%h');
 }
 
 /**
  * The type used to group commits that do not comply with the convention
  * @type {string}
  */
-const fallbackType = "other";
+const fallbackType = 'other';
 
 /**
  * List of all desired commit groups and in what order to display them.
  * @type {string[]}
  */
 const supportedTypes = [
-  "feat",
-  "fix",
-  "perf",
-  "refactor",
-  "style",
-  "docs",
-  "test",
-  "build",
-  "ci",
-  "chore",
-  "revert",
-  "deps",
+  'feat',
+  'fix',
+  'perf',
+  'refactor',
+  'style',
+  'docs',
+  'test',
+  'build',
+  'ci',
+  'chore',
+  'revert',
+  'deps',
   fallbackType,
 ];
 
@@ -130,7 +130,7 @@ function getCommits() {
  * @return {ICommitExtended}
  */
 function setCommitTypeAndScope(commit) {
-  const matchRE = new RegExp(`^(?:(${supportedTypes.join("|")})(?:\\((\\S+)\\))?:)?(.*)`, "i");
+  const matchRE = new RegExp(`^(?:(${supportedTypes.join('|')})(?:\\((\\S+)\\))?:)?(.*)`, 'i');
 
   let [, type, scope, clearSubject] = commit.subject.match(matchRE);
 
@@ -138,14 +138,14 @@ function setCommitTypeAndScope(commit) {
    * Additional rules for checking committees that do not comply with the convention, but for which it is possible to determine the type.
    */
   // Commits like `revert something`
-  if (type === undefined && commit.subject.startsWith("revert")) {
-    type = "revert";
+  if (type === undefined && commit.subject.startsWith('revert')) {
+    type = 'revert';
   }
 
   return {
     ...commit,
     type: (type || fallbackType).toLowerCase().trim(),
-    scope: (scope || "").toLowerCase().trim(),
+    scope: (scope || '').toLowerCase().trim(),
     subject: (clearSubject || commit.subject).trim(),
   };
 }
@@ -216,8 +216,8 @@ function getGroupedCommits(commits) {
  * @param {string} pad
  * @returns {string}
  */
-function getCommitsList(commits, pad = "") {
-  let changelog = "";
+function getCommitsList(commits, pad = '') {
+  let changelog = '';
   for (const commit of commits) {
     changelog += `${pad}- ${commit.subject}.`;
 
@@ -225,19 +225,19 @@ function getCommitsList(commits, pad = "") {
       changelog += ` (${commit.abbreviated_commit})`;
     }
 
-    changelog += "\r\n";
+    changelog += '\r\n';
 
     if (commit.body === undefined) {
       continue;
     }
 
-    const body = commit.body.replace("[skip ci]", "").trim();
-    if (body !== "") {
+    const body = commit.body.replace('[skip ci]', '').trim();
+    if (body !== '') {
       changelog += `${body
         .split(/\r*\n+/)
         .filter(s => !!s.trim())
         .map(s => `${pad}  ${s}`)
-        .join("\r\n")}${"\r\n"}`;
+        .join('\r\n')}${'\r\n'}`;
     }
   }
 
@@ -246,32 +246,32 @@ function getCommitsList(commits, pad = "") {
 
 function replaceHeader(str) {
   switch (str) {
-    case "feat":
-      return "New Features";
-    case "fix":
-      return "Bug Fixes";
-    case "docs":
-      return "Documentation Changes";
-    case "build":
-      return "Build System";
-    case "chore":
-      return "Chores";
-    case "ci":
-      return "Continuous Integration";
-    case "refactor":
-      return "Refactors";
-    case "style":
-      return "Code Style Changes";
-    case "test":
-      return "Tests";
-    case "perf":
-      return "Performance improvements";
-    case "revert":
-      return "Reverts";
-    case "deps":
-      return "Dependency updates";
-    case "other":
-      return "Other Changes";
+    case 'feat':
+      return 'New Features';
+    case 'fix':
+      return 'Bug Fixes';
+    case 'docs':
+      return 'Documentation Changes';
+    case 'build':
+      return 'Build System';
+    case 'chore':
+      return 'Chores';
+    case 'ci':
+      return 'Continuous Integration';
+    case 'refactor':
+      return 'Refactors';
+    case 'style':
+      return 'Code Style Changes';
+    case 'test':
+      return 'Tests';
+    case 'perf':
+      return 'Performance improvements';
+    case 'revert':
+      return 'Reverts';
+    case 'deps':
+      return 'Dependency updates';
+    case 'other':
+      return 'Other Changes';
     default:
       return str;
   }
@@ -282,19 +282,19 @@ function replaceHeader(str) {
  * @param {Map<string, CommitGroup>} groups
  */
 function getChangeLog(groups) {
-  let changelog = "";
+  let changelog = '';
 
   for (const [typeId, group] of groups) {
     if (group.isEmpty) {
       continue;
     }
 
-    changelog += `### ${replaceHeader(typeId)}${"\r\n"}`;
+    changelog += `### ${replaceHeader(typeId)}${'\r\n'}`;
 
     for (const [scopeId, scope] of group.scopes) {
       if (scope.commits.length) {
-        changelog += `- #### ${replaceHeader(scopeId)}${"\r\n"}`;
-        changelog += getCommitsList(scope.commits, "  ");
+        changelog += `- #### ${replaceHeader(scopeId)}${'\r\n'}`;
+        changelog += getCommitsList(scope.commits, '  ');
       }
     }
 
@@ -302,21 +302,21 @@ function getChangeLog(groups) {
       changelog += getCommitsList(group.commits);
     }
 
-    changelog += "\r\n" + "\r\n";
+    changelog += '\r\n' + '\r\n';
   }
 
   return changelog.trim();
 }
 
 function escapeData(s) {
-  return String(s).replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A");
+  return String(s).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
 }
 
 try {
   const commits = getCommits();
   const grouped = getGroupedCommits(commits);
   const changelog = getChangeLog(grouped);
-  process.stdout.write("::set-output name=release-note::" + escapeData(changelog) + "\r\n");
+  process.stdout.write('::set-output name=release-note::' + escapeData(changelog) + '\r\n');
   // require('fs').writeFileSync('../CHANGELOG.md', changelog, {encoding: 'utf-8'})
 } catch (e) {
   console.error(e);
