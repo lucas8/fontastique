@@ -74,12 +74,9 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16 # Need for npm >=7.7
-          cache: 'npm'
+          cache: 'yarn'
 
-      - run: npm ci
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      - run: yarn install --frozen-lockfile
 
       # The easiest way to transfer release notes to a compiled application is create `release-notes.md` in the build resources.
       # See https://github.com/electron-userland/electron-builder/issues/1511#issuecomment-310160119
