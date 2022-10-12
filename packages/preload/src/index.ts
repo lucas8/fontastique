@@ -2,5 +2,5 @@
  * @module preload
  */
 
-export { sha256sum } from './nodeCrypto';
+export { getAvailableFontFamilies } from './FontManager';
 export { versions } from './versions';
