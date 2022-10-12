@@ -1,6 +1,6 @@
-const { resolve, sep } = require('path');
+import { resolve, sep } from 'path';
 
-module.exports = {
+export default {
   '*.{js,mjs,cjs,ts,mts,cts,tsx}': ['eslint --cache --fix', 'prettier --write --ignore-unknown'],
 
   /**
