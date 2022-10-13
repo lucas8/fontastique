@@ -1,6 +1,6 @@
 {
-  "name": "font",
-  "description": "Font app",
+  "name": "typescape",
+  "description": "TODO: type app",
   "private": true,
   "main": "packages/main/dist/index.cjs",
   "author": {
