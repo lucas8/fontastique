@@ -61,6 +61,7 @@ if (import.meta.env.PROD) {
   app
     .whenReady()
     .then(() => import('electron-updater'))
+    // TODO: implement toast for new updates
     .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
     .catch(e => console.error('Failed check updates:', e));
 }

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { getAvailableFontFamilies } from '#preload';
+import { StoreProvider } from './contexts';
 
 function App() {
   useEffect(() => {
@@ -7,9 +8,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Vite + React</h1>
-    </div>
+    <StoreProvider>
+      <h1>Vite + React + lucas</h1>
+    </StoreProvider>
   );
 }
 
