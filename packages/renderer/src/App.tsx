@@ -1,17 +1,25 @@
 import { useEffect } from 'react';
 import { getAvailableFontFamilies } from '#preload';
-import { StoreProvider } from './contexts';
+import { RootStoreProvider, useStore } from '~/contexts';
+import { observer } from 'mobx-react-lite';
 
-function App() {
+const App = () => {
   useEffect(() => {
     console.log(getAvailableFontFamilies());
   }, []);
 
   return (
-    <StoreProvider>
+    <RootStoreProvider>
       <h1>Vite + React + lucas</h1>
-    </StoreProvider>
+      <SubComponent />
+    </RootStoreProvider>
   );
-}
+};
+
+const SubComponent = observer(() => {
+  const store = useStore();
+
+  return <h2>{store.testing ? 'true' : 'false'}</h2>;
+});
 
 export default App;

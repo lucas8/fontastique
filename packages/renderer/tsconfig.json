@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -17,7 +18,7 @@
     "jsx": "react-jsx",
     "paths": {
       "#preload": ["../preload/src/index"],
-      "/@/*": ["./src/*"]
+      "~/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "../../types/**/*.d.ts"]
