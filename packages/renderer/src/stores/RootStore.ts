@@ -1,11 +1,15 @@
-import { makeAutoObservable } from 'mobx';
+import { FontFamilyStore } from './FontFamilyStore';
 
 export class RootStore {
+  fontFamilies: FontFamilyStore;
+
   constructor() {
-    makeAutoObservable(this);
+    this.fontFamilies = new FontFamilyStore(this);
   }
 
-  testing = true;
-
-  // TODO: store cleanup
+  // TODO: store cleanup methods
 }
+
+export const createRootStore = () => {
+  return new RootStore();
+};

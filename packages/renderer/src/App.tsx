@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { getAvailableFontFamilies } from '#preload';
-import { RootStoreProvider, useStore } from '~/contexts';
 import { observer } from 'mobx-react-lite';
+import { getAvailableFontFamilies } from '#preload';
+import { RootStoreProvider } from '~/contexts';
+import { useStore } from './hooks/useStore';
 
 const App = () => {
   useEffect(() => {
@@ -17,9 +18,17 @@ const App = () => {
 };
 
 const SubComponent = observer(() => {
-  const store = useStore();
+  const { fontFamilies } = useStore();
 
-  return <h2>{store.testing ? 'true' : 'false'}</h2>;
+  console.log(fontFamilies.all);
+  return (
+    <div>
+      {fontFamilies.all.map(ff => (
+        <h2 key={ff.id}>{ff.name}</h2>
+      ))}
+      <button onClick={() => fontFamilies.create({ name: 'Ariel' })}>click me</button>
+    </div>
+  );
 });
 
 export default App;
