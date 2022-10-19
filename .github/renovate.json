@@ -9,7 +9,6 @@
     ":automergeBranch",
     ":disableDependencyDashboard",
     ":pinVersions",
-    ":onlyNpm",
     ":label(dependencies)",
     "schedule:weekly"
   ],
