@@ -5,6 +5,8 @@ export abstract class Model {
   @observable
   public id: string = createModelId();
 
+  public __typename: string = this.constructor.name;
+
   store: any;
 
   constructor(store: any) {
