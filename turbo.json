@@ -9,6 +9,7 @@
       "dependsOn": ["^compile"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "typecheck": {},
     "lint": {
       "outputs": []
     },
