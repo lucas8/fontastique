@@ -7,7 +7,7 @@
     },
     "compile": {
       "dependsOn": ["^compile"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
       "outputs": []
