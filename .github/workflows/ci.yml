@@ -27,4 +27,4 @@ jobs:
   build:
     if: github.event_name == 'push' && github.ref_name == 'main'
     needs: [typechecking]
-    uses: ./.github/workflows/build .yml
+    uses: ./.github/workflows/build.yml
