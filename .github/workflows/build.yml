@@ -1,0 +1,44 @@
+name: Build
+on: [workflow_call]
+
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: 'bash'
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Compile & release Electron app
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          build_script_name: build
+          args: --config ./apps/client/electron-builder.config.js
+
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          github_token: ${{ secrets.github_token }}
+
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
+          release: false
+
+          # Sometimes the build may fail due to a connection problem with Apple, GitHub, etc. servers.
+          # This option will restart the build as many attempts as possible
+          max_attempts: 3

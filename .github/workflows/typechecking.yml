@@ -2,7 +2,7 @@ name: Typechecking
 on: [workflow_call]
 
 concurrency:
-  group: typechecking-${{ github.ref }}
+  group: lint-${{ github.ref }}
   cancel-in-progress: true
 
 defaults:
@@ -10,11 +10,14 @@ defaults:
     shell: 'bash'
 
 jobs:
-  typescript:
+  tsc:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16

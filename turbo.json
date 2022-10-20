@@ -1,0 +1,25 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "web#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
+    },
+    "client#build": {
+      "dependsOn": ["^build"],
+      "env": ["MODE", "VITE_DEV_SERVER_URL"],
+      "outputs": ["dist/**"]
+    },
+    "compile": {
+      "dependsOn": ["^compile"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "typecheck": {},
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    }
+  }
+}

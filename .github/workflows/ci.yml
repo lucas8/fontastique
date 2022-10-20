@@ -24,7 +24,7 @@ jobs:
     uses: ./.github/workflows/lint.yml
   typechecking:
     uses: ./.github/workflows/typechecking.yml
-  draft_release:
+  build:
     if: github.event_name == 'push' && github.ref_name == 'main'
     needs: [typechecking]
-    uses: ./.github/workflows/release.yml
+    uses: ./.github/workflows/build.yml
