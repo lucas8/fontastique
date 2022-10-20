@@ -1,0 +1,61 @@
+{
+  "name": "electron",
+  "description": "The font browser built for designers.",
+  "private": true,
+  "main": "packages/main/dist/index.cjs",
+  "author": {
+    "email": "lucas.stettner@gmail.com",
+    "name": "Lucas Stettner"
+  },
+  "scripts": {
+    "dev": "node scripts/watch.mjs",
+    "build": "yarn build:main && yarn build:preload && yarn build:renderer",
+    "build:main": "cd ./packages/main && vite build",
+    "build:preload": "cd ./packages/preload && vite build",
+    "build:renderer": "cd ./packages/renderer && vite build",
+    "compile": "cross-env MODE=production yarn build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
+    "lint": "eslint . --ext js,mjs,cjs,ts,mts,cts,tsx",
+    "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
+    "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
+    "typecheck:renderer": "tsc --noEmit -p packages/renderer/tsconfig.json",
+    "typecheck": "yarn typecheck:main && yarn typecheck:preload && yarn typecheck:renderer",
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs",
+    "format": "yarn prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\""
+  },
+  "dependencies": {
+    "electron-font-manager": "^0.0.1",
+    "electron-updater": "5.3.0",
+    "mobx": "^6.6.2",
+    "mobx-react-lite": "^3.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "5.39.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "@vitejs/plugin-react": "^2.1.0",
+    "cross-env": "7.0.3",
+    "electron": "21.1.0",
+    "electron-builder": "23.6.0",
+    "eslint": "8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "happy-dom": "7.4.0",
+    "husky": "4.3.8",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "4.8.4",
+    "unplugin-auto-expose": "0.0.3",
+    "vite": "3.1.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged"
+    }
+  }
+}
