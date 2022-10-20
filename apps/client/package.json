@@ -3,6 +3,7 @@
   "description": "The font browser built for designers.",
   "private": true,
   "main": "packages/main/dist/index.cjs",
+  "version": "1.0.0",
   "author": {
     "email": "lucas.stettner@gmail.com",
     "name": "Lucas Stettner"
@@ -15,10 +16,7 @@
     "build:renderer": "cd ./packages/renderer && vite build",
     "compile": "cross-env MODE=production yarn build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
     "lint": "eslint . --ext js,mjs,cjs,ts,mts,cts,tsx",
-    "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
-    "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
-    "typecheck:renderer": "tsc --noEmit -p packages/renderer/tsconfig.json",
-    "typecheck": "yarn typecheck:main && yarn typecheck:preload && yarn typecheck:renderer",
+    "typecheck": "tsc --noEmit",
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs",
     "format": "yarn prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\""
   },
