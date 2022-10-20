@@ -1,6 +1,6 @@
 import { resolve, sep } from 'path';
 
-export default {
+const config = {
   '*.{js,mjs,cjs,ts,mts,cts,tsx}': ['eslint --cache --fix', 'prettier --write --ignore-unknown'],
 
   /**
@@ -20,3 +20,5 @@ export default {
     return [...new Set(filenames.map(fileNameToPackageName))].map(p => `yarn typecheck:${p}`);
   },
 };
+
+export default config;

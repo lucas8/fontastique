@@ -10,7 +10,7 @@ defaults:
     shell: 'bash'
 
 jobs:
-  eslint:
+  tsc:
     runs-on: ubuntu-latest
 
     steps:

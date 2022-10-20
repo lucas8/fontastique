@@ -15,7 +15,7 @@
     "build:preload": "cd ./packages/preload && vite build",
     "build:renderer": "cd ./packages/renderer && vite build",
     "compile": "cross-env MODE=production yarn build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
-    "lint": "eslint . --ext js,mjs,cjs,ts,mts,cts,tsx",
+    "lint": "TIMING=1 eslint . --ext js,mjs,cjs,ts,mts,cts,tsx",
     "typecheck": "tsc --noEmit",
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs",
     "format": "yarn prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\""
