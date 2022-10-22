@@ -1,1 +1,1 @@
-export { Button } from './components'
+export { ThemeProvider, useTheme } from './components'

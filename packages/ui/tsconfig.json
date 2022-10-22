@@ -6,6 +6,9 @@
     "baseUrl": "./",
     "declaration": true,
     "jsx": "react",
-    "outDir": "./dist/types"
+    "outDir": "./dist/types",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   }
 }

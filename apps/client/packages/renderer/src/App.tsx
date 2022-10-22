@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { getAvailableFontFamilies } from '#preload';
+import { ThemeProvider } from 'ui';
 import { RootStoreProvider } from '~/contexts';
 import { useStore } from '~/hooks/useStore';
 import { TSnapshot } from '~/stores';
@@ -20,8 +21,10 @@ const App = () => {
 
   return (
     <RootStoreProvider snapshot={snapshot}>
-      <h1>Vite + React + lucas</h1>
-      <SubComponent />
+      <ThemeProvider>
+        <h1>Vite + React + lucas</h1>
+        <SubComponent />
+      </ThemeProvider>
     </RootStoreProvider>
   );
 };
