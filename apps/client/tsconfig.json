@@ -4,7 +4,8 @@
   "exclude": ["node_modules"],
   "compilerOptions": {
     "paths": {
-      "~/*": ["./packages/renderer/src/*"]
+      "~/*": ["./packages/renderer/src/*"],
+      "/@/*": ["./packages/main/src/*"]
     }
   }
 }
