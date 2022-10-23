@@ -1,5 +1,5 @@
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
-import { borderRadii, colors, fontSizes, space } from './tokens';
+import { borderRadii, colors, fontSizes, fontWeights, space } from './tokens';
 
 const properties = defineProperties({
   conditions: {
@@ -30,6 +30,7 @@ const properties = defineProperties({
     width: space,
     height: space,
     fontSize: fontSizes,
+    fontWeight: fontWeights,
     textAlign: ['left', 'center', 'right'],
     color: colors,
     background: colors,

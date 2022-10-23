@@ -23,6 +23,7 @@ const config = {
       formats: ['cjs'],
     },
     rollupOptions: {
+      external: ['electron'],
       output: {
         entryFileNames: '[name].cjs',
       },

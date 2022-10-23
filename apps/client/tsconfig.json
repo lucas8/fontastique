@@ -4,9 +4,7 @@
   "exclude": ["node_modules"],
   "compilerOptions": {
     "paths": {
-      "#preload": ["./packages/preload/src/index"],
-      "~/*": ["./packages/renderer/src/*"],
-      "/@/*": ["./packages/main/src/*"]
+      "~/*": ["./packages/renderer/src/*"]
     }
   }
 }

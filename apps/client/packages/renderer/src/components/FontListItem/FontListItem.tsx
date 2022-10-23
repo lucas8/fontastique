@@ -12,7 +12,8 @@ export const FontListItem = observer<FontListItemProps>(({ font }) => {
 
   return (
     <li className={styles.container({ isActive: font.isActive })} onClick={() => fonts.setActiveFont(font)}>
-      {font.name}
+      <span className={styles.title}>{font.name}</span>
+      <span className={styles.caption}>Pangram Pangram</span>
     </li>
   );
 });

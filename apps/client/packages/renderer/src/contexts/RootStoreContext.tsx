@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
 import { createRootStore, RootStore, TSnapshot } from '~/stores';
 
@@ -10,7 +10,15 @@ type RootStoreProviderProps = {
 };
 
 export const RootStoreProvider: React.FC<RootStoreProviderProps> = ({ children, snapshot }) => {
-  const root = useLocalObservable(() => createRootStore(snapshot));
+  const root = useLocalObservable(() => createRootStore());
+
+  useEffect(() => {
+    if (snapshot.length === 0) {
+      return;
+    }
+
+    root.load(snapshot);
+  }, [snapshot]);
 
   return <RootStoreContext.Provider value={root}>{children}</RootStoreContext.Provider>;
 };

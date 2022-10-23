@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable, set } from 'mobx';
+import { action, computed, makeObservable, observable } from 'mobx';
 import { Font } from '~/models';
 import { BaseStore } from './BaseStore';
 import { RootStore } from './RootStore';

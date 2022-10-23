@@ -10,12 +10,11 @@ export type TSnapshot = TSnapshotItem[];
 export class RootStore {
   fonts: FontStore;
 
-  constructor(snapshot: TSnapshot) {
+  constructor() {
     this.fonts = new FontStore(this);
-    this._loadSnapshot(snapshot);
   }
 
-  private _loadSnapshot(snapshot: TSnapshot) {
+  public load(snapshot: TSnapshot) {
     // batch entities with the same type together
     const snapshotGroups = snapshot.reduce((acc, item) => {
       return { ...acc, [item.__typename]: [...(acc[item.__typename] || []), item] };
@@ -40,6 +39,6 @@ export class RootStore {
   // TODO: store cleanup methods
 }
 
-export const createRootStore = (snapshot: TSnapshot): RootStore => {
-  return new RootStore(snapshot);
+export const createRootStore = (): RootStore => {
+  return new RootStore();
 };
