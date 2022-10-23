@@ -5,7 +5,7 @@ import { RootStore } from './RootStore';
 
 export class FontStore extends BaseStore<Font> {
   @observable
-  public activeFont: Font | undefined = undefined;
+  public activeFont: Font | null = null;
 
   @computed
   get all(): Font[] {

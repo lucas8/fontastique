@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { getAvailableFontFamilies } from '#preload';
 import { RootStoreProvider } from '~/contexts';
 import { TSnapshot } from '~/stores';
-import { FontList, ThemeProvider } from '~/components';
+import { FontList, Layout, ThemeProvider } from '~/components';
+
 import './styles/app.css';
 
 const App = () => {
@@ -15,13 +16,16 @@ const App = () => {
   }, []);
 
   if (snapshot.length <= 0) {
+    // TODO: make loading state look nicer
     return <span>loading...</span>;
   }
 
   return (
     <RootStoreProvider snapshot={snapshot}>
       <ThemeProvider>
-        <FontList />
+        <Layout>
+          <FontList />
+        </Layout>
       </ThemeProvider>
     </RootStoreProvider>
   );
