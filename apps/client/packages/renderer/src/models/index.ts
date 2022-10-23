@@ -1,1 +1,1 @@
-export { FontFamily } from './FontFamily';
+export { Font } from './Font';

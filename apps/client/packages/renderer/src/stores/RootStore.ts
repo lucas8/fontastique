@@ -1,5 +1,5 @@
 import { BaseStore } from './BaseStore';
-import { FontFamilyStore } from './FontFamilyStore';
+import { FontStore } from './FontStore';
 
 // we'll use the term snapshot to define a plain object representation of the store
 // this will either come from the local database, or be loaded from the server
@@ -8,10 +8,10 @@ type TSnapshotItem = { __typename: string; [key: string]: any };
 export type TSnapshot = TSnapshotItem[];
 
 export class RootStore {
-  fontFamilies: FontFamilyStore;
+  fonts: FontStore;
 
   constructor(snapshot: TSnapshot) {
-    this.fontFamilies = new FontFamilyStore(this);
+    this.fonts = new FontStore(this);
     this._loadSnapshot(snapshot);
   }
 

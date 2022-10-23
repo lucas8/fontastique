@@ -3,7 +3,7 @@ import { Model } from '~/models/primitives';
 import { Class } from '~/types';
 import { RootStore } from './RootStore';
 
-export abstract class BaseStore<T extends Model> {
+export abstract class BaseStore<T extends Model<any>> {
   @observable
   data: Map<string, T> = new Map();
 

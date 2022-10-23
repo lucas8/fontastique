@@ -5,6 +5,8 @@ import { URL } from 'url';
 async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
+    width: 800,
+    height: 612,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
