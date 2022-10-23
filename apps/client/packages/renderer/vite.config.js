@@ -4,6 +4,7 @@ import { chrome } from '../../.electron-vendors.cache.json';
 import { join } from 'path';
 import react from '@vitejs/plugin-react';
 import { renderer } from 'unplugin-auto-expose';
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -41,6 +42,9 @@ const config = {
   },
   plugins: [
     react(),
+    vanillaExtractPlugin({
+      identifiers: 'short',
+    }),
     renderer.vite({
       preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
     }),
