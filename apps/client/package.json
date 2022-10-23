@@ -21,6 +21,7 @@
     "format": "yarn prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\""
   },
   "dependencies": {
+    "@tanstack/react-virtual": "^3.0.0-beta.18",
     "@vanilla-extract/css": "^1.9.1",
     "@vanilla-extract/recipes": "^0.2.5",
     "@vanilla-extract/sprinkles": "^1.5.0",

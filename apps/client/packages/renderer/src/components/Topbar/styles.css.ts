@@ -10,6 +10,7 @@ export const container = style({
   justifyContent: 'center',
   height: `${TOPBAR_HEIGHT}px`,
   position: 'fixed',
+  zIndex: 1000,
   top: 0,
   backgroundColor: vars.colors.background,
 });
