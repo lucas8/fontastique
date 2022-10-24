@@ -10,7 +10,8 @@ export const Topbar = observer(() => {
 
   return (
     <nav className={clsx(styles.container, draggable)}>
-      Typescape {activeFontIsSelected && `/ ${fonts.activeFont?.name}`}
+      <span className={styles.title}>Typescape</span>
+      {activeFontIsSelected && `/ ${fonts.activeFont?.name}`}
     </nav>
   );
 });

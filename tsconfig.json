@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
@@ -23,6 +24,6 @@
       "/@/*": ["./packages/main/src/*"]
     }
   },
-  "include": ["packages/**/*", "types/**/*"],
+  "include": ["./packages/**/*", "./types/**/*"],
   "exclude": ["node_modules", "dist"]
 }
