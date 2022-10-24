@@ -6,8 +6,11 @@ export class Font extends Model<FontStore> {
   @observable
   public name = '';
 
+  // this repersents the type of the object in the db
+  public static __typename = 'Font';
+
   @computed
-  get isActive() {
+  public get isActive() {
     return this.store.activeFont?.id === this.id;
   }
 

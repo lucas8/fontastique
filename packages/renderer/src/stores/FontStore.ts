@@ -8,7 +8,7 @@ export class FontStore extends BaseStore<Font> {
   public activeFont: Font | null = null;
 
   @computed
-  get all(): Font[] {
+  public get all(): Font[] {
     return Array.from(this.data.values());
   }
 

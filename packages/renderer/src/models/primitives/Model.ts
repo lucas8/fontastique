@@ -6,9 +6,7 @@ export abstract class Model<T extends BaseStore<any>> {
   @observable
   public id: string = createModelId();
 
-  public __typename: string = this.constructor.name;
-
-  store: T;
+  public store: T;
 
   constructor(store: T) {
     makeObservable(this);

@@ -22,7 +22,7 @@ export class RootStore {
 
     Object.keys(snapshotGroups).forEach(entityType => {
       // all items in this group will inherit the properties from BaseStore
-      const store: BaseStore<any> = Object.values(this).find(store => store.model.name === entityType);
+      const store: BaseStore<any> = Object.values(this).find(store => store.model.__typename === entityType);
 
       if (store) {
         store.load(snapshotGroups[entityType]);
