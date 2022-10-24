@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '~/styles';
+import { sprinkles, vars } from '~/styles';
 
 export const TOPBAR_HEIGHT = 33;
 
@@ -13,4 +13,9 @@ export const container = style({
   zIndex: 1000,
   top: 0,
   backgroundColor: vars.colors.background,
+});
+
+export const title = sprinkles({
+  fontWeight: 'bold',
+  mr: 1,
 });

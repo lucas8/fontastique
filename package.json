@@ -16,7 +16,10 @@
     "build:renderer": "cd ./packages/renderer && vite build",
     "compile": "cross-env MODE=production yarn build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
     "lint": "eslint . --ext js,mjs,cjs,ts,mts,cts,tsx",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "yarn typecheck:main && yarn typecheck:preload && yarn typecheck:renderer",
+    "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
+    "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
+    "typecheck:renderer": "tsc --noEmit -p packages/renderer/tsconfig.json",
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs"
   },
   "dependencies": {

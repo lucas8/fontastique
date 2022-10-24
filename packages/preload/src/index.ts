@@ -2,9 +2,9 @@
  * @module preload
  */
 
-import * as fontManager from 'electron-font-manager';
+import { getAvailableFontFamilies } from 'electron-font-manager';
 import { contextBridge } from 'electron';
-
-const getAvailableFontFamilies = () => fontManager.getAvailableFontFamilies();
+import { versions } from './versions';
 
 contextBridge.exposeInMainWorld('api', { getAvailableFontFamilies });
+contextBridge.exposeInMainWorld('versions', { versions });
