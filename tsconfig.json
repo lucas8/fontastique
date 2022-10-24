@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "esnext",
+    "types": ["node"],
+    "jsx": "react-jsx",
+    "experimentalDecorators": true,
+    "paths": {
+      "~/*": ["./packages/renderer/src/*"],
+      "/@/*": ["./packages/main/src/*"]
+    }
+  },
+  "include": ["packages/**/*", "types/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
