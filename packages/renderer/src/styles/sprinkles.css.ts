@@ -44,7 +44,7 @@ const properties = defineProperties({
     flexGrow: [0, 1],
     zIndex: [-1, 0, 1],
     cursor: ['pointer'],
-    overflow: ['auto', 'none'],
+    overflow: ['auto', 'hidden', 'scroll'],
   },
   shorthands: {
     p: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],

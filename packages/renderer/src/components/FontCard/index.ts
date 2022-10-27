@@ -1,0 +1,1 @@
+export { FontCard } from './FontCard';

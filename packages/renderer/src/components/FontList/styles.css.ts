@@ -4,7 +4,7 @@ import { reset, sprinkles } from '~/styles';
 export const container = style([
   reset,
   sprinkles({
-    overflow: 'auto',
+    overflow: 'scroll',
     width: 'full',
   }),
 ]);

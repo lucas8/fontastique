@@ -10,5 +10,6 @@ export const container = style([
   }),
   style({
     marginTop: `${TOPBAR_HEIGHT}px`,
+    height: '100vh',
   }),
 ]);

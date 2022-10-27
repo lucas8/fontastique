@@ -3,6 +3,7 @@ import { FontList, Layout, ThemeProvider } from '~/components';
 import { useSnapshot } from '~/hooks';
 
 import '~/styles/app.css';
+import { FontCardList } from './components/FontCardList';
 
 const App = () => {
   const snapshot = useSnapshot();
@@ -12,6 +13,7 @@ const App = () => {
       <ThemeProvider>
         <Layout>
           <FontList />
+          <FontCardList />
         </Layout>
       </ThemeProvider>
     </RootStoreProvider>

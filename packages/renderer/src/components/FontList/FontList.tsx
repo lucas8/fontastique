@@ -13,7 +13,7 @@ export const FontList = observer(() => {
     count: fonts.all.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 60,
-    overscan: 5,
+    overscan: 10,
   });
 
   return (

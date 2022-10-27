@@ -3,3 +3,4 @@ export { FontList } from './FontList';
 export { FontListItem } from './FontListItem';
 export { Layout } from './Layout';
 export { Topbar, TOPBAR_HEIGHT } from './Topbar';
+export { FontCard } from './FontCard';

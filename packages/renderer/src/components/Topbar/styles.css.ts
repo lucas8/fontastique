@@ -26,6 +26,7 @@ export const title = style([
     mr: 1,
   }),
   style({
+    fontFamily: 'PP Woodland',
     animation: `420ms ease 0ms 1 normal backwards running ${animateUp}`,
   }),
 ]);
