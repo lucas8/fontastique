@@ -48,6 +48,8 @@ const properties = defineProperties({
     overflow: ['auto', 'hidden', 'scroll'],
     borderWidth: space,
     borderStyle: ['solid'],
+    textOverflow: ['ellipsis'],
+    whiteSpace: ['nowrap'],
   },
   shorthands: {
     p: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],

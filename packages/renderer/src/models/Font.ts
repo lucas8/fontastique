@@ -10,6 +10,11 @@ export class Font extends Model<FontStore> {
   public static __typename = 'Font';
 
   @computed
+  public get scrollIndex() {
+    return Array.from(this.store.data.values()).indexOf(this);
+  }
+
+  @computed
   public get isActive() {
     return this.store.activeFont?.id === this.id;
   }

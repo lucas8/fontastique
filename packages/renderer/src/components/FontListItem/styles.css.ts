@@ -26,6 +26,9 @@ export const container = recipe({
 export const title = sprinkles({
   fontSize: 'title',
   fontWeight: 'bold',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
 });
 
 export const caption = sprinkles({

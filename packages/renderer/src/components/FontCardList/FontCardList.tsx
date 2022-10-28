@@ -1,16 +1,42 @@
 import { observer } from 'mobx-react-lite';
 import { useStore } from '~/hooks';
 import { FontCard } from '../FontCard/FontCard';
-import { VirtualizedList } from '../VirtualizedList';
+import * as styles from '../VirtualizedList/styles.css';
+import { useFontScroll } from '~/hooks/useFontScroll';
+import { forwardRef } from 'react';
 
-export const FontCardList = observer(() => {
-  const { fonts } = useStore();
+export const FontCardList = observer(
+  forwardRef<HTMLDivElement>((_, ref) => {
+    const { virtualizer } = useFontScroll();
+    const { fonts } = useStore();
 
-  return (
-    <VirtualizedList size={300 + 10}>
-      {fonts.all.map(font => (
-        <FontCard key={font.id} font={font} />
-      ))}
-    </VirtualizedList>
-  );
-});
+    console.log('ITEMS', virtualizer.getVirtualItems());
+
+    return (
+      <div ref={ref} className={styles.container}>
+        <ul
+          className={styles.innerList}
+          style={{
+            height: `${virtualizer.getTotalSize()}px`,
+          }}
+        >
+          {virtualizer.getVirtualItems().map(item => (
+            <li
+              key={item.index}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: `${item.size}px`,
+                transform: `translateY(${item.start}px)`,
+              }}
+            >
+              <FontCard font={fonts.all[item.index]} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }),
+);

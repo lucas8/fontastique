@@ -8,7 +8,7 @@ export const FontList = observer(() => {
   return (
     <VirtualizedList size={60 + 10}>
       {fonts.all.map(font => (
-        <FontListItem font={font} />
+        <FontListItem key={font.id} font={font} />
       ))}
     </VirtualizedList>
   );
