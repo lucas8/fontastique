@@ -22,7 +22,7 @@ export const FontScrollProvider = observer<FontScrollProviderProps>(({ children,
     count: fonts.all.length,
     getScrollElement: () => scrollContainerRef.current,
     estimateSize: () => 300 + 10,
-    overscan: 3,
+    overscan: 10,
     debug: true,
   });
 
