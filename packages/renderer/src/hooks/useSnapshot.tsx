@@ -4,7 +4,6 @@ import { TSnapshot } from '~/stores';
 
 const DB_NAME = 'typescape_snapshot';
 const DB_VERSION = 1;
-
 const STORE_NAME = 'fonts';
 
 export const useSnapshot = (): TSnapshot => {
@@ -18,6 +17,7 @@ export const useSnapshot = (): TSnapshot => {
           if (!udb.objectStoreNames.contains(STORE_NAME)) {
             const fontsOS = udb.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
 
+            // create the database fields (TODO: generate these at build time from mobx schema)
             fontsOS.createIndex('name', 'name', { unique: false });
             fontsOS.createIndex('updatedAt', 'updatedAt', { unique: false });
           }
@@ -26,14 +26,17 @@ export const useSnapshot = (): TSnapshot => {
 
       const fonts = await db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).getAll();
 
+      // if the app rerenders for any reason,we've already injected idb results
+      // in the store, skip this step for now
       if (hasInitialized.current === true) {
         return;
       }
 
-      hasInitialized.current = true;
-
+      // very crude way of checking if we already have results in the db already
+      // THIS WILL BREAK OVER TIME
+      // TODO: add a way to diff fonts in the system, or check the last time we refreshed the db
       if (fonts.length > 0) {
-        console.log('[useSnapshot] found fonts in indexedDB, using them as snapshot');
+        console.log('[useSnapshot] found fonts in indexedDB, using them as a snapshot');
 
         setSnapshot(
           fonts.map(font => ({
@@ -52,6 +55,8 @@ export const useSnapshot = (): TSnapshot => {
 
         setSnapshot(systemFonts.map(name => ({ __typename: 'Font', name })));
       }
+
+      hasInitialized.current = true;
 
       return () => db.close();
     })();

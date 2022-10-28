@@ -33,6 +33,7 @@ const properties = defineProperties({
     fontWeight: fontWeights,
     textAlign: ['left', 'center', 'right'],
     color: colors,
+    borderColor: colors,
     background: colors,
     backgroundColor: colors,
     borderRadius: borderRadii,
@@ -45,6 +46,8 @@ const properties = defineProperties({
     zIndex: [-1, 0, 1],
     cursor: ['pointer'],
     overflow: ['auto', 'hidden', 'scroll'],
+    borderWidth: space,
+    borderStyle: ['solid'],
   },
   shorthands: {
     p: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],

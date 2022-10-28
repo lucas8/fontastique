@@ -1,9 +1,9 @@
 import { RootStoreProvider } from '~/contexts';
-import { FontList, Layout, ThemeProvider } from '~/components';
+import { FontList, Layout, ThemeProvider, FontCardList } from '~/components';
 import { useSnapshot } from '~/hooks';
 
 import '~/styles/app.css';
-import { FontCardList } from './components/FontCardList';
+import '~/styles/reset.css';
 
 const App = () => {
   const snapshot = useSnapshot();
