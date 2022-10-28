@@ -10,8 +10,6 @@ export const FontCardList = observer(
     const { virtualizer } = useFontScroll();
     const { fonts } = useStore();
 
-    console.log('ITEMS', virtualizer.getVirtualItems());
-
     return (
       <div ref={ref} className={styles.container}>
         <ul

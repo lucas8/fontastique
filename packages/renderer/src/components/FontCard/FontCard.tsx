@@ -12,9 +12,7 @@ export const FontCard = observer<FontCardProps>(({ font }) => {
 
   return (
     <div ref={ref} className={styles.container({ active: font.isActive })}>
-      <h2>
-        {font.id} | {font.name}
-      </h2>
+      <h2>{font.name}</h2>
       <span>Panagram Panagram</span>
       {/* Tags */}
     </div>

@@ -30,7 +30,7 @@ export const FontScrollProvider = observer<FontScrollProviderProps>(({ children,
     <FontScrollContext.Provider
       value={{
         virtualizer,
-        scrollToId: (id: number) => virtualizer.scrollToIndex(id, { align: 'auto', smoothScroll: true }),
+        scrollToId: (id: number) => virtualizer.scrollToIndex(id, { align: 'start', smoothScroll: true }),
       }}
     >
       {children}
