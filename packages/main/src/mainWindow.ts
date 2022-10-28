@@ -7,6 +7,8 @@ async function createWindow() {
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
     width: 800,
     height: 612,
+    minWidth: 800,
+    minHeight: 612,
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: false,
@@ -27,10 +29,6 @@ async function createWindow() {
    */
   browserWindow.on('ready-to-show', () => {
     browserWindow?.show();
-
-    if (import.meta.env.DEV) {
-      browserWindow?.webContents.openDevTools();
-    }
   });
 
   /**

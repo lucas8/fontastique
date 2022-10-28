@@ -14,6 +14,7 @@ export const colors = {
   background: '#101010',
   backgroundSecondary: '#282828',
   accent: '#E6E6EB',
+  darkAccent: '#404040',
   text: '#ffffff',
   stroke: '#C9C9D1',
 };

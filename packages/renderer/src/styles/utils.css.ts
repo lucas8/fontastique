@@ -22,6 +22,10 @@ export const reset = style({
     '[data-js-focus-visible] &:focus:not([data-focus-visible-added])': {
       outline: 'none',
     },
+    // hide scroll bars
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
   },
 });
 

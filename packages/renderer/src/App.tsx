@@ -1,18 +1,24 @@
-import { RootStoreProvider } from '~/contexts';
-import { FontList, Layout, ThemeProvider } from '~/components';
+import { RootStoreProvider, FontScrollProvider } from '~/contexts';
+import { FontList, Layout, ThemeProvider, FontCardList } from '~/components';
 import { useSnapshot } from '~/hooks';
 
 import '~/styles/app.css';
+import '~/styles/reset.css';
+import { useRef } from 'react';
 
 const App = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const snapshot = useSnapshot();
 
   return (
     <RootStoreProvider snapshot={snapshot}>
       <ThemeProvider>
-        <Layout>
-          <FontList />
-        </Layout>
+        <FontScrollProvider scrollContainerRef={scrollContainerRef}>
+          <Layout>
+            <FontList />
+            <FontCardList ref={scrollContainerRef} />
+          </Layout>
+        </FontScrollProvider>
       </ThemeProvider>
     </RootStoreProvider>
   );
