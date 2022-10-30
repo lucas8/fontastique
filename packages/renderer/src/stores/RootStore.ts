@@ -1,6 +1,5 @@
 import { BaseStore } from './BaseStore';
 import { FontStore } from './FontStore';
-import { UiStore } from './UiStore';
 
 // we'll use the term snapshot to define a plain object representation of the store
 // this will either come from the local database, or be loaded from the server
@@ -10,11 +9,9 @@ export type TSnapshot = TSnapshotItem[];
 
 export class RootStore {
   fonts: FontStore;
-  ui: UiStore;
 
   constructor() {
     this.fonts = new FontStore(this);
-    this.ui = new UiStore(this);
   }
 
   public load(snapshot: TSnapshot) {

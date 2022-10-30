@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { useSpring, useTransition, animated } from 'react-spring';
 import { useStore } from '~/hooks';
 import { draggable } from '~/styles';
 import * as styles from './styles.css';
@@ -8,26 +9,35 @@ import * as styles from './styles.css';
 export const Topbar = observer(() => {
   const { fonts } = useStore();
   const activeFontIsSelected = fonts.activeFont !== null;
+  const navStyles = useSpring({
+    x: activeFontIsSelected ? -50 : 0,
+  });
+  const [initialHasRendered, setInitialHasRendered] = useState(true);
 
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-  const prevFontId = useRef<string>('');
-
-  useEffect(() => {
-    if (!!fonts.activeFont && fonts.activeFont.id !== prevFontId.current) {
-      setShouldAnimate(true);
-      prevFontId.current = fonts.activeFont.id;
-    }
-  }, [fonts.activeFont]);
+  const transitions = useTransition([fonts.activeFont?.name.replace(/ /g, '\u00a0')], {
+    from: { opacity: 0, y: -8 },
+    enter: { opacity: 1, y: 0 },
+    leave: { opacity: 0, y: 8 },
+    immediate: initialHasRendered,
+    exitBeforeEnter: true,
+    config: {
+      duration: 100,
+    },
+  });
 
   return (
-    <nav className={clsx(styles.container, draggable)}>
+    <animated.nav style={navStyles} className={clsx(styles.container, draggable)}>
       <span className={styles.title}>Typescape</span>
-      <span
-        onAnimationEnd={() => setShouldAnimate(false)}
-        className={clsx(styles.fontName, shouldAnimate && styles.animate)}
-      >
-        {activeFontIsSelected && `/ ${fonts.activeFont?.name}`}
-      </span>
-    </nav>
+      {activeFontIsSelected && (
+        <animated.span className={styles.fontName} onAnimationEnd={() => setInitialHasRendered(false)}>
+          <span className={styles.divider}>/</span>
+          {transitions((style, item) => (
+            <animated.span style={style} className={styles.fontItem}>
+              {item}
+            </animated.span>
+          ))}
+        </animated.span>
+      )}
+    </animated.nav>
   );
 });
