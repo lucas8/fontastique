@@ -10,7 +10,7 @@ const animateUp = keyframes({
 
 const textAnimateInLeft = keyframes({
   '0%': { opacity: '0', transform: 'translateX(-5px)' },
-  '100%': { opacity: '0.8', transform: 'none' },
+  '100%': { opacity: 1, transform: 'none' },
 });
 
 export const container = style({
@@ -40,7 +40,6 @@ export const fontName = style([
   sprinkles({
     fontFamily: 'body',
     fontWeight: 'normal',
-    opacity: 0.8,
   }),
   style({
     animation: `200ms ease 0ms 1 normal backwards running ${textAnimateInLeft}`,

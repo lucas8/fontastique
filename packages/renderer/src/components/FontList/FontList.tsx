@@ -47,7 +47,7 @@ export const FontList = observer(() => {
       <div
         className={styles.divider({
           position: 'bottom',
-          active: (parentRef.current?.scrollTop || 0) <= virtualizer.getTotalSize() - 600,
+          active: (parentRef.current?.scrollTop || 0) <= (virtualizer.getTotalSize() || 1000) - 600,
         })}
         style={{ maxWidth: parentRef.current?.clientWidth }}
       />
