@@ -21,7 +21,7 @@ export const FontListItem = observer<FontListItemProps>(({ font }) => {
       }}
     >
       <span className={styles.title}>{font.name}</span>
-      <span className={styles.caption}>Pangram Pangram</span>
+      <span className={styles.caption}>TypeType Foundery</span>
     </div>
   );
 });

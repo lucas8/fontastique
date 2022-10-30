@@ -1,4 +1,4 @@
-import { globalStyle } from '@vanilla-extract/css';
+import { globalFontFace, globalStyle } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
 globalStyle('body', {
@@ -18,4 +18,9 @@ globalStyle('html', {
 
 globalStyle('a', {
   textDecoration: 'none',
+});
+
+globalFontFace(`'ABC Marfa Mono'`, {
+  src: 'url("/fonts/ABCMarfaMonoVariable.ttf") format("truetype")',
+  fontStyle: 'normal',
 });

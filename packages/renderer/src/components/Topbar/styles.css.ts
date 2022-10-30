@@ -8,6 +8,11 @@ const animateUp = keyframes({
   '100%': { opacity: '1', transform: 'none' },
 });
 
+const textAnimateIn = keyframes({
+  '0%': { opacity: '0', transform: 'translateY(-5px)' },
+  '100%': { opacity: '0.8', transform: 'none' },
+});
+
 export const container = style({
   width: '100%',
   display: 'flex',
@@ -30,3 +35,15 @@ export const title = style([
     animation: `420ms ease 0ms 1 normal backwards running ${animateUp}`,
   }),
 ]);
+
+export const fontName = style([
+  sprinkles({
+    fontFamily: 'body',
+    fontWeight: 'normal',
+    opacity: 0.8,
+  }),
+]);
+
+export const animate = style({
+  animation: `420ms ease 0ms 1 normal backwards running ${textAnimateIn}`,
+});

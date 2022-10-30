@@ -8,7 +8,9 @@ import { forwardRef } from 'react';
 export const FontCardList = observer(
   forwardRef<HTMLDivElement>((_, ref) => {
     const { virtualizer } = useFontScroll();
-    const { fonts } = useStore();
+    const { fonts, ui } = useStore();
+
+    console.log(ui.isScrollBound);
 
     return (
       <div ref={ref} className={styles.container}>

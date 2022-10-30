@@ -1,5 +1,5 @@
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
-import { borderRadii, colors, fontSizes, fontWeights, space } from './tokens';
+import { borderRadii, colors, fonts, fontSizes, fontWeights, letterSpacing, space } from './tokens';
 
 const properties = defineProperties({
   conditions: {
@@ -50,6 +50,9 @@ const properties = defineProperties({
     borderStyle: ['solid'],
     textOverflow: ['ellipsis'],
     whiteSpace: ['nowrap'],
+    fontFamily: fonts,
+    letterSpacing: letterSpacing,
+    opacity: [0.8],
   },
   shorthands: {
     p: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
