@@ -14,6 +14,7 @@ const PACKAGE_ROOT = __dirname;
 const config = {
   mode: process.env.MODE,
   root: PACKAGE_ROOT,
+  publicDir: join(PACKAGE_ROOT, 'public'),
   resolve: {
     alias: {
       '~/': join(PACKAGE_ROOT, 'src') + '/',
@@ -29,7 +30,7 @@ const config = {
     sourcemap: true,
     target: `chrome${chrome}`,
     outDir: 'dist',
-    assetsDir: '.',
+    assetsDir: join(PACKAGE_ROOT, 'public'),
     rollupOptions: {
       input: join(PACKAGE_ROOT, 'index.html'),
     },
