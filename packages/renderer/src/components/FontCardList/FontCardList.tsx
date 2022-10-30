@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { useStore } from '~/hooks';
 import { FontCard } from '../FontCard/FontCard';
-import * as styles from '../VirtualizedList/styles.css';
+import * as styles from './styles.css';
 import { useFontScroll } from '~/hooks/useFontScroll';
 import { forwardRef } from 'react';
 
