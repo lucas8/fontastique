@@ -38,11 +38,18 @@ export const useSnapshot = (): TSnapshot => {
       if (fontCount === 0) {
         console.log('[useSnapshot] no fonts found, bootstrapping indexes...');
 
-        const systemFonts = window.api.getAvailableFontFamilies();
+        const systemFontFamilies = window.api.getAvailableFontsSync().reduce((acc, font) => {
+          const isFontIncluded = acc.find(f => f === font.family);
+          if (!isFontIncluded) {
+            return [...acc, font.family];
+          } else {
+            return acc;
+          }
+        }, [] as string[]);
         const tx = db.transaction(STORE_NAME, 'readwrite');
         const store = tx.objectStore(STORE_NAME);
 
-        await Promise.all([...systemFonts.map(name => store.put({ name }))]);
+        await Promise.all([...systemFontFamilies.map(name => store.put({ name }))]);
       }
 
       const fonts = await db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).getAll();

@@ -2,9 +2,9 @@
  * @module preload
  */
 
-import { getAvailableFontFamilies } from 'electron-font-manager';
+import { getAvailableFontsSync } from 'font-scanner';
 import { contextBridge } from 'electron';
 import { versions } from './versions';
 
-contextBridge.exposeInMainWorld('api', { getAvailableFontFamilies });
+contextBridge.exposeInMainWorld('api', { getAvailableFontsSync });
 contextBridge.exposeInMainWorld('versions', { versions });

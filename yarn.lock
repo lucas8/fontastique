@@ -1787,13 +1787,6 @@ electron-builder@23.6.0:
     simple-update-notifier "^1.0.7"
     yargs "^17.5.1"
 
-electron-font-manager@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/electron-font-manager/-/electron-font-manager-0.0.1.tgz#e99b182f2450daec303608a98f32e46bc735300f"
-  integrity sha512-/WVv8FiG2ZT7ZuRMFdWCZHwDaVdbsFsAlaWtLyJ+7cxJBsUlfiu006MJlK1o1ngx6xP98PZnc3oNJBtverGxQQ==
-  dependencies:
-    node-addon-api "^1.7.1"
-
 electron-osx-sign@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/electron-osx-sign/-/electron-osx-sign-0.6.0.tgz#9b69c191d471d9458ef5b1e4fdd52baa059f1bb8"
@@ -2460,6 +2453,13 @@ flatted@^3.1.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
+
+font-scanner@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/font-scanner/-/font-scanner-0.2.1.tgz#c97ea23fdb2df1fb4c900d220b2ec03af55d2c52"
+  integrity sha512-YP+EZZ0hjOdJABdDzMdv1nKMhueZQJUQU86lka4HIVesPDVxW5hd9Gz9zGgwDE0G/UjRwmhlBB3FxYtPgkh/cg==
+  dependencies:
+    node-addon-api "^5.0.0"
 
 form-data@^2.2.0:
   version "2.5.1"
@@ -3497,10 +3497,15 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-node-addon-api@^1.6.3, node-addon-api@^1.7.1:
+node-addon-api@^1.6.3:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-1.7.2.tgz#3df30b95720b53c24e59948b49532b662444f54d"
   integrity sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==
+
+node-addon-api@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-5.0.0.tgz#7d7e6f9ef89043befdb20c1989c905ebde18c501"
+  integrity sha512-CvkDw2OEnme7ybCykJpVcKH+uAOLV2qLqiyla128dN9TkEWfrYmxG6C2boDe5KcNQqZF3orkqzGgOMvZ/JNekA==
 
 node-fetch@^2.x.x:
   version "2.6.7"
