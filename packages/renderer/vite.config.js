@@ -30,7 +30,7 @@ const config = {
     sourcemap: true,
     target: `chrome${chrome}`,
     outDir: 'dist',
-    assetsDir: join(PACKAGE_ROOT, 'public'),
+    assetsDir: 'public',
     rollupOptions: {
       input: join(PACKAGE_ROOT, 'index.html'),
     },

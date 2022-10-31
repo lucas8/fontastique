@@ -42,7 +42,7 @@ export const fontName = style([
     fontWeight: 'normal',
   }),
   style({
-    animation: `200ms ease 0ms 1 normal backwards running ${textAnimateInLeft}`,
+    animation: `420ms ease 0ms 1 normal backwards running ${textAnimateInLeft}`,
   }),
 ]);
 

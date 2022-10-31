@@ -10,8 +10,6 @@ export const FontCardList = observer(
     const { virtualizer } = useFontScroll();
     const { fonts, ui } = useStore();
 
-    console.log(ui.isScrollCaptured);
-
     return (
       <div ref={ref} className={styles.container} onWheel={() => ui.setScrollCaptured(false)}>
         <ul
