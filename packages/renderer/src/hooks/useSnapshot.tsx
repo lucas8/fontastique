@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as idb from 'idb';
 import { TSnapshot } from '~/stores';
+import { Font } from '~/models';
 
 const DB_NAME = 'typescape_snapshot';
 const DB_VERSION = 1;
@@ -19,6 +20,7 @@ export const useSnapshot = (): TSnapshot => {
 
             // create the database fields (TODO: generate these at build time from mobx schema)
             fontsOS.createIndex('name', 'name', { unique: false });
+            fontsOS.createIndex('postscriptName', 'postscriptName', { unique: false });
             fontsOS.createIndex('updatedAt', 'updatedAt', { unique: false });
           }
         },
@@ -39,24 +41,20 @@ export const useSnapshot = (): TSnapshot => {
         console.log('[useSnapshot] no fonts found, bootstrapping indexes...');
 
         const systemFontFamilies = window.api.getAvailableFontsSync().reduce((acc, font) => {
-          const isFontIncluded = acc.find(f => f === font.family);
-          if (!isFontIncluded) {
-            return [...acc, font.family];
-          } else {
-            return acc;
-          }
-        }, [] as string[]);
+          return { [font.family]: { name: font.family, postscriptName: font.postscriptName }, ...acc };
+        }, [] as Font[]);
+        console.log(systemFontFamilies);
         const tx = db.transaction(STORE_NAME, 'readwrite');
         const store = tx.objectStore(STORE_NAME);
 
-        await Promise.all([...systemFontFamilies.map(name => store.put({ name }))]);
+        await Promise.all([...Object.values(systemFontFamilies).map(font => store.put(font))]);
       }
 
       const fonts = await db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).getAll();
 
       console.log(`[useSnapshot] ${fonts.length} fonts found & injected in idb, setting snapshot...`);
 
-      setSnapshot(fonts.map(({ name, id }) => ({ __typename: 'Font', name, id })));
+      setSnapshot(fonts.map(font => ({ __typename: 'Font', ...font })));
 
       hasInitialized.current = true;
 

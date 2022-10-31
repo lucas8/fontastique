@@ -18,7 +18,6 @@ type FontScrollProviderProps = {
 export const FontScrollProvider = observer<FontScrollProviderProps>(({ children, scrollContainerRef }) => {
   const { fonts } = useStore();
 
-  console.log(fonts.all.length);
   const virtualizer = useVirtualizer({
     count: fonts.all.length,
     getScrollElement: () => scrollContainerRef.current,

@@ -13,14 +13,14 @@ export const Topbar = observer(() => {
     x: activeFontIsSelected ? -50 : 0,
   });
 
-  const prevActiveFontName = useRef<string>('');
+  const prevActiveFontId = useRef<string>('');
   const initialHasRendered = useRef(true);
 
-  const isReverse = prevActiveFontName.current.localeCompare(fonts.activeFont?.name || ' ') > 0;
+  const isReverse = prevActiveFontId.current > (fonts.activeFont?.id || '0');
 
   const transitions = useTransition([fonts.activeFont?.name.replace(/ /g, '\u00a0')], {
     from: isReverse ? { opacity: 0, y: -8 } : { opacity: 0, y: 8 },
-    enter: { opacity: 1, y: 0, onRest: () => (prevActiveFontName.current = fonts.activeFont?.name || '') },
+    enter: { opacity: 1, y: 0, onRest: () => (prevActiveFontId.current = fonts.activeFont?.id || '0') },
     leave: isReverse ? { opacity: 0, y: 8 } : { opacity: 0, y: -8 },
     immediate: initialHasRendered.current,
     exitBeforeEnter: true,

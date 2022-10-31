@@ -63,7 +63,7 @@ export const fontWeights = {
 };
 
 export const fontSizes = {
-  largeHeading: '48px',
+  largeHeading: '36px',
   heading: '24px',
   title: '18px',
   body: '16px',

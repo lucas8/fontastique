@@ -31,7 +31,7 @@ export const container = recipe({
 });
 
 export const header = sprinkles({
-  fontFamily: 'body',
+  // fontFamily: 'body',
   fontSize: 'largeHeading',
   fontWeight: 'bold',
   color: 'black',

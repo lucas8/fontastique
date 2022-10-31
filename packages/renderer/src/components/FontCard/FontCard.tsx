@@ -10,6 +10,8 @@ type FontCardProps = {
 export const FontCard = observer<FontCardProps>(({ font }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
+  console.log(font.postscriptName);
+
   return (
     <div
       ref={ref}
@@ -18,8 +20,10 @@ export const FontCard = observer<FontCardProps>(({ font }) => {
         isUnfocused: font.isNonActiveDarkCard,
       })}
     >
-      <h2 className={styles.header}>{font.name}</h2>
-      <span className={styles.caption}>TypeType Foundery</span>
+      <h2 className={styles.header} style={{ fontFamily: font.postscriptName }}>
+        {font.name}
+      </h2>
+      <span className={styles.caption}>{font.postscriptName}</span>
       {/* Tags */}
     </div>
   );

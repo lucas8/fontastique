@@ -6,6 +6,9 @@ export class Font extends Model<FontStore> {
   @observable
   public name = '';
 
+  @observable
+  public postscriptName = '';
+
   // this repersents the type of the object in the db
   public static __typename = 'Font';
 
