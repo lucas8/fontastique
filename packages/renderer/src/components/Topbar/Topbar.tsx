@@ -45,5 +45,3 @@ export const Topbar = observer(() => {
     </animated.nav>
   );
 });
-
-//
