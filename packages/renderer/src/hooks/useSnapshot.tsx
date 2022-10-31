@@ -1,5 +1,5 @@
-import * as idb from 'idb';
 import { useEffect, useRef, useState } from 'react';
+import * as idb from 'idb';
 import { TSnapshot } from '~/stores';
 
 const DB_NAME = 'typescape_snapshot';

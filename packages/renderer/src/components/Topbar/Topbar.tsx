@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-import { observer } from 'mobx-react-lite';
 import { useRef } from 'react';
 import { useSpring, useTransition, animated } from 'react-spring';
+import clsx from 'clsx';
+import { observer } from 'mobx-react-lite';
 import { useStore } from '~/hooks';
 import { draggable } from '~/styles';
 import * as styles from './styles.css';

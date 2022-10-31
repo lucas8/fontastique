@@ -19,6 +19,11 @@ export class Font extends Model<FontStore> {
     return this.store.activeFont?.id === this.id;
   }
 
+  @computed
+  get isNonActiveDarkCard() {
+    return this.store.rootStore.ui.isScrollCaptured && !this.isActive;
+  }
+
   constructor(fields: Partial<Font> = {}, store: FontStore) {
     super(store);
     set(this, fields);

@@ -1,10 +1,10 @@
+import { useRef } from 'react';
 import { RootStoreProvider, FontScrollProvider } from '~/contexts';
 import { FontList, Layout, ThemeProvider, FontCardList } from '~/components';
 import { useSnapshot } from '~/hooks';
 
 import '~/styles/app.css';
 import '~/styles/reset.css';
-import { useRef } from 'react';
 
 const App = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);

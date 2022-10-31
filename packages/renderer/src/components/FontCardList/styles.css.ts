@@ -7,6 +7,9 @@ export const container = style([
     overflow: 'scroll',
     width: 'full',
   }),
+  style({
+    // scrollSnapType: 'y mandatory',
+  }),
 ]);
 
 export const innerList = sprinkles({
