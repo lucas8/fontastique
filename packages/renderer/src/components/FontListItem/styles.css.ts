@@ -38,4 +38,8 @@ export const caption = sprinkles({
   fontSize: 'caption',
   fontWeight: 'medium',
   color: 'textSecondary',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  letterSpacing: 'default',
+  overflow: 'hidden',
 });

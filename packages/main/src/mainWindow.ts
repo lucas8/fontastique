@@ -6,9 +6,9 @@ async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
     width: 800,
-    height: 612,
-    minWidth: 800,
-    minHeight: 612,
+    height: 540,
+    // minWidth: 800,
+    // minHeight: 612,
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: false,

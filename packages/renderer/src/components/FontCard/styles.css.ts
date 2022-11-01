@@ -14,8 +14,12 @@ export const container = recipe({
       borderWidth: 1.5,
     }),
     style({
-      height: 300,
+      height: 130,
       transition: 'all ease 200ms',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      letterSpacing: 'default',
+      overflow: 'hidden',
     }),
   ]),
   variants: {
