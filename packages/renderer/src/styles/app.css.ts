@@ -20,7 +20,7 @@ globalStyle('a', {
   textDecoration: 'none',
 });
 
-globalFontFace(`'ABC Marfa Mono'`, {
+globalFontFace("'ABC Marfa Mono'", {
   src: 'url("/fonts/ABCMarfaMonoVariable.ttf") format("truetype")',
   fontStyle: 'normal',
 });
