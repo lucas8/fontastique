@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { useSpring, useTransition, animated } from 'react-spring';
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '~/hooks';
@@ -7,11 +9,39 @@ import * as styles from './styles.css';
 export const Topbar = observer(() => {
   const { fonts } = useStore();
   const activeFontIsSelected = fonts.activeFont !== null;
+  const navStyles = useSpring({
+    x: activeFontIsSelected ? -50 : 0,
+  });
+
+  const prevActiveFontId = useRef<string>('');
+  const initialHasRendered = useRef(true);
+
+  const isReverse = prevActiveFontId.current > (fonts.activeFont?.id || '0');
+
+  const transitions = useTransition([fonts.activeFont?.name.replace(/ /g, '\u00a0')], {
+    from: isReverse ? { opacity: 0, y: -8 } : { opacity: 0, y: 8 },
+    enter: { opacity: 1, y: 0, onRest: () => (prevActiveFontId.current = fonts.activeFont?.id || '0') },
+    leave: isReverse ? { opacity: 0, y: 8 } : { opacity: 0, y: -8 },
+    immediate: initialHasRendered.current,
+    exitBeforeEnter: true,
+    config: {
+      duration: 100,
+    },
+  });
 
   return (
-    <nav className={clsx(styles.container, draggable)}>
+    <animated.nav style={navStyles} className={clsx(styles.container, draggable)}>
       <span className={styles.title}>Typescape</span>
-      {activeFontIsSelected && `/ ${fonts.activeFont?.name}`}
-    </nav>
+      {activeFontIsSelected && (
+        <animated.span className={styles.fontName} onAnimationEnd={() => (initialHasRendered.current = false)}>
+          <span className={styles.divider}>/</span>
+          {transitions((style, item) => (
+            <animated.span style={style} className={styles.fontItem}>
+              {item}
+            </animated.span>
+          ))}
+        </animated.span>
+      )}
+    </animated.nav>
   );
 });

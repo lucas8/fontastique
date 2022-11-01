@@ -16,12 +16,14 @@ export const colors = {
   accent: '#E6E6EB',
   darkAccent: '#404040',
   text: '#ffffff',
+  textSecondary: 'rgba(255, 255, 255, 0.5);',
   stroke: '#C9C9D1',
 };
 
 export const space = {
   0: '0px',
   1: '4px',
+  1.5: '6px',
   2: '8px',
   3: '12px',
   4: '16px',
@@ -37,7 +39,14 @@ export const space = {
   none: '0',
 };
 
+export const letterSpacing = {
+  0: '0px',
+  mono: '-0.005em',
+  default: '0.02em',
+};
+
 export const fonts = {
+  header: "'ABC Marfa Mono'",
   body: 'TWK Lausanne, sans-serif',
 };
 
@@ -49,12 +58,12 @@ export const fontWeights = {
   light: '300',
   normal: '400',
   medium: '500',
-  semiBold: '600',
+  semibold: '600',
   bold: '700',
 };
 
 export const fontSizes = {
-  largeHeading: '48px',
+  largeHeading: '36px',
   heading: '24px',
   title: '18px',
   body: '16px',

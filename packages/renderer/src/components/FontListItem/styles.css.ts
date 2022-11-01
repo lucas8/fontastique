@@ -24,15 +24,22 @@ export const container = recipe({
 });
 
 export const title = sprinkles({
+  fontFamily: 'body',
   fontSize: 'title',
   fontWeight: 'bold',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
+  letterSpacing: 'default',
   overflow: 'hidden',
 });
 
 export const caption = sprinkles({
+  fontFamily: 'header',
   fontSize: 'caption',
-  fontWeight: 'normal',
-  color: 'stroke',
+  fontWeight: 'medium',
+  color: 'textSecondary',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  letterSpacing: 'default',
+  overflow: 'hidden',
 });

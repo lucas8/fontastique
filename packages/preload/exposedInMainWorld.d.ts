@@ -1,5 +1,9 @@
-interface Window {
-  readonly version: number;
+import { getAvailableFontsSync } from 'font-scanner';
 
-  readonly api: { getAvailableFontFamilies: () => string[] };
+declare global {
+  interface Window {
+    readonly version: number;
+
+    readonly api: { getAvailableFontsSync: typeof getAvailableFontsSync };
+  }
 }

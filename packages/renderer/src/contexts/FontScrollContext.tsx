@@ -21,9 +21,8 @@ export const FontScrollProvider = observer<FontScrollProviderProps>(({ children,
   const virtualizer = useVirtualizer({
     count: fonts.all.length,
     getScrollElement: () => scrollContainerRef.current,
-    estimateSize: () => 300 + 10,
-    overscan: 10,
-    debug: true,
+    estimateSize: () => 130 + 10,
+    overscan: 100,
   });
 
   return (

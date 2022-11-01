@@ -6,6 +6,9 @@ export class Font extends Model<FontStore> {
   @observable
   public name = '';
 
+  @observable
+  public postscriptName = '';
+
   // this repersents the type of the object in the db
   public static __typename = 'Font';
 
@@ -17,6 +20,11 @@ export class Font extends Model<FontStore> {
   @computed
   public get isActive() {
     return this.store.activeFont?.id === this.id;
+  }
+
+  @computed
+  get isNonActiveDarkCard() {
+    return this.store.rootStore.ui.isScrollCaptured && !this.isActive;
   }
 
   constructor(fields: Partial<Font> = {}, store: FontStore) {

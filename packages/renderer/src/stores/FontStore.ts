@@ -15,6 +15,7 @@ export class FontStore extends BaseStore<Font> {
   @action
   public setActiveFont(font: Font) {
     this.activeFont = font;
+    this.rootStore.ui.setScrollCaptured(true);
   }
 
   constructor(rootStore: RootStore) {

@@ -11,13 +11,39 @@ export const container = recipe({
       px: 4,
       py: 3,
       borderStyle: 'solid',
-      borderWidth: 1,
+      borderWidth: 1.5,
     }),
-    style({ height: 300 }),
+    style({
+      height: 130,
+      transition: 'all ease 200ms',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      letterSpacing: 'default',
+      overflow: 'hidden',
+    }),
   ]),
   variants: {
+    isUnfocused: {
+      true: {
+        opacity: 0.8,
+      },
+    },
     active: {
       true: sprinkles({ borderColor: 'darkAccent' }),
     },
   },
+});
+
+export const header = sprinkles({
+  // fontFamily: 'body',
+  fontSize: 'largeHeading',
+  fontWeight: 'bold',
+  color: 'black',
+});
+
+export const caption = sprinkles({
+  fontFamily: 'header',
+  fontSize: 'title',
+  fontWeight: 'medium',
+  color: 'stroke',
 });

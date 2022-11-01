@@ -1,17 +1,17 @@
+import { forwardRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '~/hooks';
 import { FontCard } from '../FontCard/FontCard';
-import * as styles from '../VirtualizedList/styles.css';
+import * as styles from './styles.css';
 import { useFontScroll } from '~/hooks/useFontScroll';
-import { forwardRef } from 'react';
 
 export const FontCardList = observer(
   forwardRef<HTMLDivElement>((_, ref) => {
     const { virtualizer } = useFontScroll();
-    const { fonts } = useStore();
+    const { fonts, ui } = useStore();
 
     return (
-      <div ref={ref} className={styles.container}>
+      <div ref={ref} className={styles.container} onWheel={() => ui.setScrollCaptured(false)}>
         <ul
           className={styles.innerList}
           style={{
