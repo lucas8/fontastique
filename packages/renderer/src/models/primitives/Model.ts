@@ -3,6 +3,8 @@ import { BaseStore } from '~/stores/BaseStore';
 import { createModelId } from '~/utils';
 
 export abstract class Model<T extends BaseStore<any>> {
+  public static __typename: string;
+
   @observable
   public id: string = createModelId();
 

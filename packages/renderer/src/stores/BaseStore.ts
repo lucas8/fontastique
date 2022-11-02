@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from 'mobx';
+import { action, makeObservable, observable, runInAction } from 'mobx';
 import { Model } from '~/models/primitives';
 import { Class } from '~/types';
 import { RootStore } from './RootStore';

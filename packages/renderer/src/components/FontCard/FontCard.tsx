@@ -10,8 +10,6 @@ type FontCardProps = {
 export const FontCard = observer<FontCardProps>(({ font }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  console.log(font.postscriptName);
-
   return (
     <div
       ref={ref}

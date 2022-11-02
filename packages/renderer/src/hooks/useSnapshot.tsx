@@ -1,32 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
-import * as idb from 'idb';
-import { TSnapshot } from '~/stores';
+import { useEffect, useState } from 'react';
 import { Font } from '~/models';
-
-const DB_NAME = 'typescape_snapshot';
-const DB_VERSION = 1;
-const STORE_NAME = 'fonts';
+import { TSnapshot } from '~/stores';
+import { createTreeFromSystem, Database, IDBManager } from '~/utils';
 
 export const useSnapshot = (): TSnapshot => {
-  const [snapshot, setSnapshot] = useState<TSnapshot>([]);
-  const hasInitialized = useRef(false);
+  useEffect(() => {
+    const setupDatabase = async () => {
+      await Database.getConnection();
+    };
+    setupDatabase();
+  }, []);
+
+  return [{ __typename: 'Font', name: 'Inter', id: 0, postscriptName: 'Inter' }];
+  // { __typename: 'FontWeight', font_id: 0, weight: '500', italic: false, monospace: false, postscriptName: 'Inter V' },
+};
+
+/*
 
   useEffect(() => {
     (async () => {
-      const db = await idb.openDB(DB_NAME, DB_VERSION, {
-        upgrade: udb => {
-          if (!udb.objectStoreNames.contains(STORE_NAME)) {
-            const fontsOS = udb.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
-
-            // create the database fields (TODO: generate these at build time from mobx schema)
-            fontsOS.createIndex('name', 'name', { unique: false });
-            fontsOS.createIndex('postscriptName', 'postscriptName', { unique: false });
-            fontsOS.createIndex('updatedAt', 'updatedAt', { unique: false });
-          }
-        },
-      });
-
-      const fontCount = await db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).count();
+      const fontCount = await db.transaction(FONTS_STORE_NAME, 'readwrite').objectStore(FONTS_STORE_NAME).count();
 
       // if the app rerenders for any reason,we've already injected idb results
       // in the store, skip this step for now
@@ -61,6 +54,4 @@ export const useSnapshot = (): TSnapshot => {
       return () => db.close();
     })();
   }, []);
-
-  return snapshot;
-};
+*/

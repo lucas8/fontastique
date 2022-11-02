@@ -1,16 +1,26 @@
 import { computed, observable, set } from 'mobx';
 import { FontStore } from '~/stores/FontStore';
-import { Model } from './primitives';
+import { FontWeight } from './FontWeight';
+import { Model, OneToOne } from './primitives';
+import { Property } from './primitives/Property';
+
+// TODO: use mobx reactions to save state to the idb
 
 export class Font extends Model<FontStore> {
+  public static __typename = 'Font';
+
   @observable
+  @Property()
   public name = '';
 
   @observable
+  @Property()
   public postscriptName = '';
 
-  // this repersents the type of the object in the db
-  public static __typename = 'Font';
+  constructor(fields: Partial<Font> = {}, store: FontStore) {
+    super(store);
+    set(this, fields);
+  }
 
   @computed
   public get scrollIndex() {
@@ -25,10 +35,5 @@ export class Font extends Model<FontStore> {
   @computed
   get isNonActiveDarkCard() {
     return this.store.rootStore.ui.isScrollCaptured && !this.isActive;
-  }
-
-  constructor(fields: Partial<Font> = {}, store: FontStore) {
-    super(store);
-    set(this, fields);
   }
 }
