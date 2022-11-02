@@ -1,5 +1,6 @@
 import { BaseStore } from './BaseStore';
 import { FontStore } from './FontStore';
+import { FontWeightStore } from './FontWeightStore';
 import { UiStore } from './UiStore';
 
 // we'll use the term snapshot to define a plain object representation of the store
@@ -10,14 +11,16 @@ export type TSnapshot = TSnapshotItem[];
 
 export class RootStore {
   fonts: FontStore;
+  fontWeights: FontWeightStore;
   ui: UiStore;
 
   constructor() {
     this.fonts = new FontStore(this);
     this.ui = new UiStore(this);
+    this.fontWeights = new FontWeightStore(this);
   }
 
-  public load(snapshot: TSnapshot) {
+  public hydrate(snapshot: TSnapshot) {
     // batch entities with the same type together
     const snapshotGroups = snapshot.reduce((acc, item) => {
       return { ...acc, [item.__typename]: [...(acc[item.__typename] || []), item] };
@@ -28,7 +31,7 @@ export class RootStore {
       const store: BaseStore<any> = Object.values(this).find(store => store.model.__typename === entityType);
 
       if (store) {
-        store.load(snapshotGroups[entityType]);
+        store.hydrate(snapshotGroups[entityType]);
       } else {
         console.warn("[RootStore] couldn't find a store for item of type ", entityType);
       }

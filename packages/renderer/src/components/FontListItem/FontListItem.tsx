@@ -20,10 +20,8 @@ export const FontListItem = observer<FontListItemProps>(({ font }) => {
         scrollToId(font.scrollIndex);
       }}
     >
-      <span className={styles.title} style={{ fontFamily: font.postscriptName }}>
-        {font.name}
-      </span>
-      <span className={styles.caption}>{font.postscriptName}</span>
+      <span className={styles.title}>{font.name}</span>
+      <span className={styles.caption}>{font.name}</span>
     </div>
   );
 });

@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Font } from '~/models';
+import { useEffect } from 'react';
 import { TSnapshot } from '~/stores';
-import { createTreeFromSystem, Database, IDBManager } from '~/utils';
+import { Database } from '~/utils';
 
 export const useSnapshot = (): TSnapshot => {
   useEffect(() => {
@@ -11,8 +10,11 @@ export const useSnapshot = (): TSnapshot => {
     setupDatabase();
   }, []);
 
-  return [{ __typename: 'Font', name: 'Inter', id: 0, postscriptName: 'Inter' }];
-  // { __typename: 'FontWeight', font_id: 0, weight: '500', italic: false, monospace: false, postscriptName: 'Inter V' },
+  return [
+    { __typename: 'Font', name: 'Inter', id: 0 },
+    { __typename: 'FontWeight', font_id: 0, weight: '500', italic: false, monospace: false, postscriptName: 'Inter V' },
+  ];
+  // ,
 };
 
 /*

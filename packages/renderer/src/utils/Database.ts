@@ -18,10 +18,6 @@ export class Database {
   public static getConnection() {
     if (!!this.instance) return this.instance;
 
-    dbModels.forEach(model => {
-      console.log(Reflect.getMetadata('fields', model));
-    });
-
     this.instance = idb.openDB(DB_NAME, DB_VERSION, {
       upgrade: udb => {
         dbModels.forEach(model => {
@@ -35,7 +31,7 @@ export class Database {
 
               if (field.type === 'property') {
                 os.createIndex(fieldName, fieldName, { unique: field.unique });
-              } else if (field.type === 'one-to-one') {
+              } else if (field.type === 'many-to-one') {
                 os.createIndex(`${fieldName}_id`, `${fieldName}_id`, { unique: field.unique });
               }
             });

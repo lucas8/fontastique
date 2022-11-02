@@ -28,7 +28,7 @@ export abstract class BaseStore<T extends Model<any>> {
   }
 
   @action
-  public load(items: Partial<T>[]) {
+  public hydrate(items: Partial<T>[]) {
     return items.forEach(item => this.create(item));
   }
 }

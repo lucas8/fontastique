@@ -17,7 +17,7 @@ export const RootStoreProvider: React.FC<RootStoreProviderProps> = ({ children, 
       return;
     }
 
-    root.load(snapshot);
+    root.hydrate(snapshot);
   }, [snapshot]);
 
   return <RootStoreContext.Provider value={root}>{children}</RootStoreContext.Provider>;

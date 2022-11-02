@@ -1,21 +1,20 @@
 import { computed, observable, set } from 'mobx';
 import { FontStore } from '~/stores/FontStore';
 import { FontWeight } from './FontWeight';
-import { Model, OneToOne } from './primitives';
+import { Model } from './primitives';
+import { OneToMany } from './primitives/OneToMany';
 import { Property } from './primitives/Property';
 
-// TODO: use mobx reactions to save state to the idb
-
 export class Font extends Model<FontStore> {
-  public static __typename = 'Font';
+  public static readonly __typename = 'Font';
+
+  @observable
+  @OneToMany<FontWeight>('font')
+  public weights: FontWeight[] = [];
 
   @observable
   @Property()
   public name = '';
-
-  @observable
-  @Property()
-  public postscriptName = '';
 
   constructor(fields: Partial<Font> = {}, store: FontStore) {
     super(store);

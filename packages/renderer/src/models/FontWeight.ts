@@ -1,15 +1,16 @@
 import { observable, set } from 'mobx';
 import { FontStore } from '~/stores/FontStore';
 import { Font } from '.';
-import { Model, OneToOne, Property } from './primitives';
+import { Model, Property } from './primitives';
+import { ManyToOne } from './primitives/OneToMany';
 
 type TFontWeight = 300 | 400 | 500 | 600 | 700;
 
 export class FontWeight extends Model<FontStore> {
-  public static __typename = 'FontWeight';
+  public static readonly __typename = 'FontWeight';
 
   @observable
-  @OneToOne(Font)
+  @ManyToOne<Font>('weights')
   public font?: Font;
 
   @observable

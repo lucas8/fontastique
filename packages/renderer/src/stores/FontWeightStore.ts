@@ -1,25 +1,16 @@
 import { action, computed, makeObservable, observable } from 'mobx';
-import { Font } from '~/models';
+import { Font, FontWeight } from '~/models';
 import { BaseStore } from './BaseStore';
 import { RootStore } from './RootStore';
 
-export class FontStore extends BaseStore<Font> {
-  @observable
-  public activeFont: Font | null = null;
-
+export class FontWeightStore extends BaseStore<FontWeight> {
   constructor(rootStore: RootStore) {
-    super(rootStore, Font);
+    super(rootStore, FontWeight);
     makeObservable(this);
   }
 
   @computed
   public get all() {
     return Array.from(this.data.values());
-  }
-
-  @action
-  public setActiveFont(font: Font) {
-    this.activeFont = font;
-    this.rootStore.ui.setScrollCaptured(true);
   }
 }
