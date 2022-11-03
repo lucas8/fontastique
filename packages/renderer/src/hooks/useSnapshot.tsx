@@ -12,7 +12,26 @@ export const useSnapshot = (): TSnapshot => {
 
   return [
     { __typename: 'Font', name: 'Inter', id: 0 },
-    { __typename: 'FontWeight', font_id: 0, weight: '500', italic: false, monospace: false, postscriptName: 'Inter V' },
+    {
+      id: 0,
+      __typename: 'FontWeight',
+      font_id: 0,
+      weight: '500',
+      italic: false,
+      monospace: false,
+      path: '/',
+      postscriptName: 'Inter V',
+    },
+    {
+      id: 1,
+      __typename: 'FontWeight',
+      font_id: 0,
+      weight: '600',
+      italic: false,
+      monospace: false,
+      path: '/',
+      postscriptName: 'Inter VX',
+    },
   ];
   // ,
 };
@@ -23,7 +42,6 @@ export const useSnapshot = (): TSnapshot => {
     (async () => {
       const fontCount = await db.transaction(FONTS_STORE_NAME, 'readwrite').objectStore(FONTS_STORE_NAME).count();
 
-      // if the app rerenders for any reason,we've already injected idb results
       // in the store, skip this step for now
       if (hasInitialized.current === true) {
         return;

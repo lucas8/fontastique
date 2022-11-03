@@ -1,17 +1,20 @@
-import { observable, set } from 'mobx';
-import { FontStore } from '~/stores/FontStore';
+import { observable } from 'mobx';
+import { FontWeightStore } from '~/stores/FontWeightStore';
 import { Font } from '.';
 import { Model, Property } from './primitives';
-import { ManyToOne } from './primitives/OneToMany';
+import { ManyToOne } from './primitives/';
 
 type TFontWeight = 300 | 400 | 500 | 600 | 700;
 
-export class FontWeight extends Model<FontStore> {
+export class FontWeight extends Model<FontWeightStore> {
   public static readonly __typename = 'FontWeight';
 
   @observable
-  @ManyToOne<Font>('weights')
+  @ManyToOne<Font>('Font', 'weights')
   public font?: Font;
+
+  @Property()
+  public font_id?: string;
 
   @observable
   @Property()
@@ -33,8 +36,7 @@ export class FontWeight extends Model<FontStore> {
   @Property()
   public postscriptName: string = '';
 
-  constructor(fields: Partial<FontWeight> = {}, store: FontStore) {
+  constructor(store: FontWeightStore) {
     super(store);
-    set(this, fields);
   }
 }

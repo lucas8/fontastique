@@ -1,4 +1,4 @@
-import { action, makeObservable, observable, runInAction } from 'mobx';
+import { action, makeObservable, observable } from 'mobx';
 import { Model } from '~/models/primitives';
 import { Class } from '~/types';
 import { RootStore } from './RootStore';
@@ -28,7 +28,10 @@ export abstract class BaseStore<T extends Model<any>> {
   }
 
   @action
-  public hydrate(items: Partial<T>[]) {
-    return items.forEach(item => this.create(item));
+  public hydrate(models: Model<any>[]): Model<any>[] {
+    return models.map(model => {
+      this.data.set(model.id, model as any);
+      return model;
+    });
   }
 }
