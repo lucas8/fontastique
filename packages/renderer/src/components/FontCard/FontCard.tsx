@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import * as styles from './styles.css';
 import { Font } from '~/models';
 import { observer } from 'mobx-react-lite';

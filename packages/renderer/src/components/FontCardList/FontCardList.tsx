@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '~/hooks';
 import { FontCard } from '../FontCard/FontCard';

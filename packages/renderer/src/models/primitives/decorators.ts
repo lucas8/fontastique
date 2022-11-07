@@ -27,19 +27,16 @@ export const OneToMany = <T extends Model<any>>(typename: string, pointer: keyof
     const fields = Reflect.getMetadata(modelFieldsSymbol, model) || {};
     const field: ModelFieldMeta = { type: 'one-to-many', pointer, typename };
 
-    const type = Reflect.getMetadata('design:type', target, propertyKey);
-
-    console.log(type?.name);
-
     Reflect.defineMetadata(modelFieldsSymbol, { ...fields, [propertyKey]: field }, model);
   };
 };
 
-export const ManyToOne = <T extends Model<any>>(typename: string, pointer: keyof T) => {
+export const ManyToOne = <T extends Model<any>>(pointer: keyof T) => {
   return (target: any, propertyKey: string) => {
     const model = target.constructor;
+    const type = Reflect.getMetadata('design:type', target, propertyKey);
     const fields = Reflect.getMetadata(modelFieldsSymbol, model) || {};
-    const field: ModelFieldMeta = { type: 'many-to-one', pointer, typename };
+    const field: ModelFieldMeta = { type: 'many-to-one', pointer, typename: type?.name };
 
     Reflect.defineMetadata(modelFieldsSymbol, { ...fields, [propertyKey]: field }, model);
   };

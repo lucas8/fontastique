@@ -35,7 +35,7 @@ export class RootStore {
     const models = Object.keys(snapshotGroups)
       .map(entityType => {
         // all items in this group will inherit the properties from BaseStore
-        const store: BaseStore<any> = Object.values(this).find(store => store.model.__typename === entityType);
+        const store: BaseStore<any> = Object.values(this).find(store => store.model?.__typename === entityType);
 
         if (!store) {
           console.warn("[RootStore] couldn't find a store for item of type ", entityType);

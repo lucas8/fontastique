@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRef } from 'react';
 import { RootStoreProvider, FontScrollProvider } from '~/contexts';
 import { FontList, Layout, ThemeProvider, FontCardList } from '~/components';

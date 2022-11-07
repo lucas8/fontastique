@@ -10,7 +10,7 @@ export class FontWeight extends Model<FontWeightStore> {
   public static readonly __typename = 'FontWeight';
 
   @observable
-  @ManyToOne<Font>('Font', 'weights')
+  @ManyToOne<Font>('weights')
   public font?: Font;
 
   @Property()
@@ -18,7 +18,7 @@ export class FontWeight extends Model<FontWeightStore> {
 
   @observable
   @Property()
-  public path: string = '';
+  public path = '';
 
   @observable
   @Property()
@@ -26,15 +26,15 @@ export class FontWeight extends Model<FontWeightStore> {
 
   @observable
   @Property()
-  public italic: boolean = false;
+  public italic = false;
 
   @observable
   @Property()
-  public monospace: boolean = false;
+  public monospace = false;
 
   @observable
   @Property()
-  public postscriptName: string = '';
+  public postscriptName = '';
 
   constructor(store: FontWeightStore) {
     super(store);

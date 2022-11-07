@@ -1,3 +1,4 @@
+import React from 'react';
 import { Topbar } from '../Topbar';
 import * as styles from './styles.css';
 
