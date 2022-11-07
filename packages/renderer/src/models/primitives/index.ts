@@ -2,3 +2,4 @@
 import 'reflect-metadata';
 export { Model } from './Model';
 export { Property, OneToMany, ManyToOne, modelFieldsSymbol } from './decorators';
+export type { FieldMetadata } from './decorators';

@@ -1,13 +1,21 @@
 import { Model } from './Model';
 
 type Options = { unique?: boolean };
+type ModelFieldMeta =
+  | ({
+      type: 'property';
+    } & Options)
+  | { type: 'one-to-many'; pointer: string | number | symbol; typename: string }
+  | { type: 'many-to-one'; pointer: string | number | symbol; typename: string };
+export type FieldMetadata = Record<string, ModelFieldMeta>;
+
 export const modelFieldsSymbol = Symbol('modelFields');
 
 export const Property = (options?: Options) => {
   return (target: any, propertyKey: string) => {
     const model = target.constructor;
     const fields = Reflect.getMetadata(modelFieldsSymbol, model) || {};
-    const field = { type: 'property', ...options };
+    const field: ModelFieldMeta = { type: 'property', ...options };
 
     Reflect.defineMetadata(modelFieldsSymbol, { ...fields, [propertyKey]: field }, model);
   };
@@ -17,7 +25,11 @@ export const OneToMany = <T extends Model<any>>(typename: string, pointer: keyof
   return (target: any, propertyKey: string) => {
     const model = target.constructor;
     const fields = Reflect.getMetadata(modelFieldsSymbol, model) || {};
-    const field = { type: 'one-to-many', pointer, typename };
+    const field: ModelFieldMeta = { type: 'one-to-many', pointer, typename };
+
+    const type = Reflect.getMetadata('design:type', target, propertyKey);
+
+    console.log(type?.name);
 
     Reflect.defineMetadata(modelFieldsSymbol, { ...fields, [propertyKey]: field }, model);
   };
@@ -27,7 +39,7 @@ export const ManyToOne = <T extends Model<any>>(typename: string, pointer: keyof
   return (target: any, propertyKey: string) => {
     const model = target.constructor;
     const fields = Reflect.getMetadata(modelFieldsSymbol, model) || {};
-    const field = { type: 'many-to-one', pointer, typename };
+    const field: ModelFieldMeta = { type: 'many-to-one', pointer, typename };
 
     Reflect.defineMetadata(modelFieldsSymbol, { ...fields, [propertyKey]: field }, model);
   };

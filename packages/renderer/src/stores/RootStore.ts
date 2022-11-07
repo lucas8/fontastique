@@ -21,9 +21,8 @@ export class RootStore {
     this.fonts = new FontStore(this);
     this.ui = new UiStore(this);
     this.fontWeights = new FontWeightStore(this);
-    this._hydrationStore = new HydrationStore(this);
 
-    console.log('run oof');
+    this._hydrationStore = new HydrationStore();
     this._hydrate(snapshot);
   }
 
@@ -48,11 +47,7 @@ export class RootStore {
       .flat();
 
     this._hydrationStore.resolveLatentEntityOperations(models);
-    // console.log(this.fonts.all);
-    // console.log(this.fontWeights.all);
   }
-
-  // TODO: store cleanup methods
 }
 
 export const createRootStore = (snapshot: TSnapshot): RootStore => {
