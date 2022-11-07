@@ -14,10 +14,8 @@ export type TDatabase = idb.IDBPDatabase<unknown>;
 export class Database {
   private static instance: Promise<TDatabase>;
 
-  private constructor() {}
-
   public static getConnection() {
-    if (!!this.instance) return this.instance;
+    if (this.instance) return this.instance;
 
     this.instance = idb.openDB(DB_NAME, DB_VERSION, {
       upgrade: udb => {

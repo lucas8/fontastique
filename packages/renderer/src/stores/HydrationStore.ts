@@ -1,4 +1,4 @@
-import { action, makeObservable, observable, set, toJS } from 'mobx';
+import { action, makeObservable, observable, set } from 'mobx';
 import { FieldMetadata, Model, modelFieldsSymbol } from '~/models/primitives';
 import { BaseStore } from './BaseStore';
 import { TSnapshotItem } from './RootStore';
@@ -12,7 +12,7 @@ type ILatentEntityOperation = {
 
 export class HydrationStore {
   @observable
-  private latentEntityOperations: Array<ILatentEntityOperation> = new Array();
+  private latentEntityOperations: Array<ILatentEntityOperation> = [];
 
   constructor() {
     makeObservable(this);

@@ -23,9 +23,7 @@ export abstract class Model<T extends BaseStore<any>> {
   public static hydrate<T extends Class<Model<any>>, X extends InstanceType<T>>(this: T, attrs: X) {
     const newModel = new this(attrs.store);
 
-    if (!!attrs) {
-      set(newModel, attrs);
-    }
+    set(newModel, attrs);
 
     return newModel;
   }

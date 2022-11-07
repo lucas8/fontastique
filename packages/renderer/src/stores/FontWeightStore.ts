@@ -1,5 +1,5 @@
-import { action, computed, makeObservable, observable } from 'mobx';
-import { Font, FontWeight } from '~/models';
+import { computed, makeObservable } from 'mobx';
+import { FontWeight } from '~/models';
 import { BaseStore } from './BaseStore';
 import { RootStore } from './RootStore';
 

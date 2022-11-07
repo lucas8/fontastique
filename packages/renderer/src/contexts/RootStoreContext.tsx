@@ -13,7 +13,7 @@ type RootStoreProviderProps = {
 };
 
 export const RootStoreProvider: React.FC<RootStoreProviderProps> = ({ children, snapshot }) => {
-  const root = useLocalObservable(() => (!!rootStore ? rootStore : (rootStore = createRootStore(snapshot))));
+  const root = useLocalObservable(() => rootStore ?? (rootStore = createRootStore(snapshot)));
 
   return <RootStoreContext.Provider value={root}>{children}</RootStoreContext.Provider>;
 };
