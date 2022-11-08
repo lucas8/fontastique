@@ -4,6 +4,6 @@ declare global {
   interface Window {
     readonly version: number;
 
-    readonly api: { getAvailableFontsSync: typeof getAvailableFontsSync };
+    readonly api: { getAvailableFonts: typeof getAvailableFontsSync };
   }
 }

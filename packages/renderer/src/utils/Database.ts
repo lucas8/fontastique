@@ -23,8 +23,8 @@ export class Database {
           // create the object stores from the reflected model metadata
           if (!udb.objectStoreNames.contains(model.__typename)) {
             const fields: FieldMetadata = Reflect.getMetadata(modelFieldsSymbol, model);
-            // TODO: cleanup typename stuff
-            const os = udb.createObjectStore(model.__typename, { keyPath: 'id', autoIncrement: true });
+            // TODO: cleanup typename stuff - also add metadata for keypath and autoIncrement
+            const os = udb.createObjectStore(model.__typename, { keyPath: 'id', autoIncrement: false });
 
             Object.keys(fields).forEach(fieldName => {
               const field = fields[fieldName];

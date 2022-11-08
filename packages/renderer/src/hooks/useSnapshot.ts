@@ -1,14 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { TSnapshot } from '~/stores';
-import { Database } from '~/utils';
+import { Database, IDBManager } from '~/utils';
 
 export const useSnapshot = (): TSnapshot => {
+  const [snapshot, setSnapshot] = useState([]);
+
   useEffect(() => {
     const setupDatabase = async () => {
-      await Database.getConnection();
+      const db = await Database.getConnection();
+      const manager = new IDBManager(db);
+
+      if (await manager.shouldBootstrap()) {
+        // const systemFontFamilies = window.api.getAvailableFonts().reduce((acc, font) => {
+        //   return { [font.family]: { name: font.family }, ...acc };
+        // }, []);
+        // setSnapshot(systemFontFamilies);
+      } else {
+      }
     };
     setupDatabase();
   }, []);
+
+  // return snapshot;
 
   return [
     { __typename: 'Font', name: 'Inter', id: 0 },

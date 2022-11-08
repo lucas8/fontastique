@@ -7,9 +7,9 @@ export class IDBManager {
     this.db = instance;
   }
 
-  // public async shouldBootstrap() {
-  //   const fontCount = await this.db.transaction(FONTS_STORE_NAME, 'readwrite').objectStore(FONTS_STORE_NAME).count();
+  public async shouldBootstrap() {
+    const fontCount = await this.db.transaction('Font', 'readwrite').objectStore('Font').count();
 
-  //   return fontCount === 0;
-  // }
+    return fontCount === 0;
+  }
 }
