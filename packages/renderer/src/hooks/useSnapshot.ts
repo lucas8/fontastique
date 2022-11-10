@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { TSnapshot } from '~/stores';
-import { Database, IDBManager } from '~/utils';
+import { createModelId, Database, IDBManager } from '~/utils';
 
 export const useSnapshot = (): TSnapshot => {
-  const [snapshot, setSnapshot] = useState([]);
+  const [snapshot, setSnapshot] = useState<TSnapshot>([]);
 
   useEffect(() => {
     const setupDatabase = async () => {
@@ -11,42 +11,75 @@ export const useSnapshot = (): TSnapshot => {
       const manager = new IDBManager(db);
 
       if (await manager.shouldBootstrap()) {
-        // const systemFontFamilies = window.api.getAvailableFonts().reduce((acc, font) => {
-        //   return { [font.family]: { name: font.family }, ...acc };
-        // }, []);
-        // setSnapshot(systemFontFamilies);
-      } else {
+        const fonts = await window.api.getFonts();
+
+        const fontTree = fonts.reduce((prev, curr) => {
+          const { weight, italic, monospace, path, postscriptName } = curr;
+          const id = prev[curr.family]?.id ?? createModelId();
+
+          return {
+            ...prev,
+            [curr.family]: {
+              __typename: 'Font',
+              id,
+              name: curr.family,
+              weights: (prev[curr.family]?.weights || []).concat({
+                id: createModelId(),
+                __typename: 'FontWeight',
+                font_id: id,
+                weight,
+                italic,
+                monospace,
+                path,
+                postscriptName,
+              }),
+            },
+          };
+        }, {} as any);
+
+        const newSnapshot = Object.values(fontTree).reduce((prev: any, curr: any) => {
+          curr.weights.forEach((weight: any) => {
+            prev.push(weight);
+          });
+
+          delete curr.weights;
+
+          prev.push(curr);
+
+          return prev;
+        }, [] as Array<any>);
+
+        console.log(newSnapshot);
+        setSnapshot(newSnapshot as any);
       }
     };
     setupDatabase();
   }, []);
 
-  // return snapshot;
+  return snapshot;
 
-  return [
-    { __typename: 'Font', name: 'Inter', id: 0 },
-    {
-      id: 0,
-      __typename: 'FontWeight',
-      font_id: 0,
-      weight: '500',
-      italic: false,
-      monospace: false,
-      path: '/',
-      postscriptName: 'Inter V',
-    },
-    {
-      id: 1,
-      __typename: 'FontWeight',
-      font_id: 0,
-      weight: '600',
-      italic: false,
-      monospace: false,
-      path: '/',
-      postscriptName: 'Inter VX',
-    },
-  ];
-  // ,
+  // return [
+  //   { __typename: 'Font', name: 'Inter', id: '96b0a785-a730-4cb1-bb4d-1f132068b155' },
+  //   { __typename: 'Font', name: 'Inter V', id: '6b0a785-a730-4cb1-bb4d-1f132068b155' },
+  //   {
+  //     font_id: '96b0a785-a730-4cb1-bb4d-1f132068b155',
+  //     __typename: 'FontWeight',
+  //     weight: '500',
+  //     italic: false,
+  //     monospace: false,
+  //     path: '/',
+  //     postscriptName: 'Inter V',
+  //   },
+  //   {
+  //     font_id: '96b0a785-a730-4cb1-bb4d-1f132068b155',
+  //     __typename: 'FontWeight',
+  //     weight: '600',
+  //     italic: false,
+  //     monospace: false,
+  //     path: '/',
+  //     postscriptName: 'Inter VX',
+  //   },
+  // ];
 };
 
 /*

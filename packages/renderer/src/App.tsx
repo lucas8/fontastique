@@ -11,6 +11,10 @@ const App = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const snapshot = useSnapshot();
 
+  if (snapshot.length === 0) {
+    return <span>loading...</span>;
+  }
+
   return (
     <RootStoreProvider snapshot={snapshot}>
       <ThemeProvider>

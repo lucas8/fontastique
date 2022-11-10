@@ -1,28 +1,24 @@
 import { BaseStore } from './BaseStore';
 import { FontStore } from './FontStore';
 import { FontWeightStore } from './FontWeightStore';
-import { HydrationStore } from './HydrationStore';
 import { UiStore } from './UiStore';
 
 // we'll use the term snapshot to define a plain object representation of the store
 // this will either come from the local database, or be loaded from the server
 // TODO: more strictly define what this schema will look like
 export type TSnapshotItem = { __typename: string; [key: string]: any };
-export type TSnapshot = TSnapshotItem[];
+export type TSnapshot = Array<TSnapshotItem>;
 
 export class RootStore {
   fonts: FontStore;
   fontWeights: FontWeightStore;
   ui: UiStore;
 
-  _hydrationStore: HydrationStore;
-
   constructor(snapshot: TSnapshot) {
     this.fonts = new FontStore(this);
     this.ui = new UiStore(this);
     this.fontWeights = new FontWeightStore(this);
 
-    this._hydrationStore = new HydrationStore();
     this._hydrate(snapshot);
   }
 
@@ -32,21 +28,17 @@ export class RootStore {
       return { ...acc, [item.__typename]: [...(acc[item.__typename] || []), item] };
     }, {} as Record<string, TSnapshotItem[]>);
 
-    const models = Object.keys(snapshotGroups)
-      .map(entityType => {
-        // all items in this group will inherit the properties from BaseStore
-        const store: BaseStore<any> = Object.values(this).find(store => store.model?.__typename === entityType);
+    Object.keys(snapshotGroups).map(entityType => {
+      // all items in this group will inherit the properties from BaseStore
+      const store: BaseStore<any> = Object.values(this).find(store => store.model?.__typename === entityType);
 
-        if (!store) {
-          console.warn("[RootStore] couldn't find a store for item of type ", entityType);
-          return [];
-        }
+      if (!store) {
+        console.warn("[RootStore] couldn't find a store for item of type ", entityType);
+        return [];
+      }
 
-        return store.hydrate(this._hydrationStore.hydrateStore(store, snapshotGroups[entityType]));
-      })
-      .flat();
-
-    this._hydrationStore.resolveLatentEntityOperations(models);
+      store.hydrate(snapshotGroups[entityType]);
+    });
   }
 }
 

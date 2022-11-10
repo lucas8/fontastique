@@ -1,6 +1,5 @@
-import { action, makeObservable, observable, set } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 import { BaseStore } from '~/stores/BaseStore';
-import { Class } from '~/types';
 import { createModelId } from '~/utils';
 import { Property } from './decorators';
 
@@ -17,14 +16,5 @@ export abstract class Model<T extends BaseStore<any>> {
     makeObservable(this);
 
     this.store = store;
-  }
-
-  @action
-  public static hydrate<T extends Class<Model<any>>, X extends InstanceType<T>>(this: T, attrs: X) {
-    const newModel = new this(attrs.store);
-
-    set(newModel, attrs);
-
-    return newModel;
   }
 }

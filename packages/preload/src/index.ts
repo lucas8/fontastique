@@ -2,15 +2,11 @@
  * @module preload
  */
 
-import { getAvailableFontsSync } from 'font-scanner';
-import { contextBridge } from 'electron';
+import { ipcRenderer, contextBridge } from 'electron';
 import { versions } from './versions';
 
-const getAvailableFonts = () => {
-  const systemFonts = getAvailableFontsSync();
+contextBridge.exposeInMainWorld('api', {
+  getFonts: () => ipcRenderer.invoke('getFonts'),
+});
 
-  return systemFonts;
-};
-
-contextBridge.exposeInMainWorld('api', { getAvailableFonts });
 contextBridge.exposeInMainWorld('versions', { versions });

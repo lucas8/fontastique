@@ -3,11 +3,6 @@ import { sprinkles, vars } from '~/styles';
 
 export const TOPBAR_HEIGHT = 33;
 
-const animateUp = keyframes({
-  '0%': { opacity: '0', transform: 'translateY(-10px)' },
-  '100%': { opacity: '1', transform: 'none' },
-});
-
 const textAnimateInLeft = keyframes({
   '0%': { opacity: '0', transform: 'translateX(-5px)' },
   '100%': { opacity: 1, transform: 'none' },
@@ -32,7 +27,6 @@ export const title = style([
   }),
   style({
     fontFamily: 'PP Woodland',
-    animation: `420ms ease 0ms 1 normal backwards running ${animateUp}`,
   }),
 ]);
 

@@ -20,6 +20,7 @@ export const FontCard = observer<FontCardProps>(({ font }) => {
     >
       <h2 className={styles.header}>{font.name}</h2>
       <span className={styles.caption}>{font.name}</span>
+      {/* <span className={styles.caption}>{font.weights.length}</span> */}
       {/* Tags */}
     </div>
   );
