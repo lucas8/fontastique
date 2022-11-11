@@ -9,9 +9,13 @@ import {
   borderRadii,
   borderWidths,
   letterSpacings,
+  transitions,
+  borderStyles,
+  opacity,
 } from './tokens';
 
 export const vars = createGlobalTheme(':root', {
+  opacity,
   colors,
   space,
   fonts,
@@ -21,4 +25,6 @@ export const vars = createGlobalTheme(':root', {
   letterSpacings,
   borderRadii,
   borderWidths,
+  borderStyles,
+  transitions,
 });

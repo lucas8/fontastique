@@ -1,12 +1,11 @@
 import { computed, observable, set } from 'mobx';
 import { FontStore } from '~/stores/FontStore';
-import { Model, Property } from './primitives';
+import { Model } from './primitives';
 
 export class Font extends Model<FontStore> {
   public static readonly __typename = 'Font';
 
   @observable
-  @Property()
   public name = '';
 
   constructor(store: FontStore, fields: Partial<Font> = {}) {

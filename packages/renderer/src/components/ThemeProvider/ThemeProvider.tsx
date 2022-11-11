@@ -1,5 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
-import type { Mode } from '../../styles/tokens';
+
+type Mode = 'dark';
 
 /**
  * NOTE: this provider doesn't do much for now but it will make it very easy

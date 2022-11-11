@@ -18,13 +18,13 @@ export const base = resetStyles({
   padding: 0,
 
   // Allow adding border to element by just adding borderWidth
-  // borderColor: vars.colors.foregroundSecondary,
-  // borderStyle: vars.borderStyles.solid,
+  borderColor: vars.colors.stroke,
+  borderStyle: vars.borderStyles.solid,
   borderWidth: 0,
 
   color: vars.colors.current,
   fontSize: '100%',
-  // fontFamily: vars.fonts.sans,
+  fontFamily: vars.fonts.body,
   verticalAlign: 'baseline',
   selectors: {
     [`${hideFocusRingsDataAttribute}`]: {
@@ -39,7 +39,7 @@ const block = resetStyles({
 });
 
 const body = resetStyles({
-  // lineHeight: vars.lineHeights.none,
+  lineHeight: vars.lineHeights.none,
 });
 
 const list = resetStyles({
@@ -70,16 +70,16 @@ const field = resetStyles([
   resetStyles({
     outline: 'none',
     '::placeholder': {
-      // color: vars.colors.textTertiary,
-      // opacity: vars.opacity['100'],
+      color: vars.colors.textSecondary,
+      opacity: vars.opacity['100'],
     },
   }),
 ]);
 
 // Custom reset rules
 const mark = resetStyles({
-  // backgroundColor: vars.colors.transparent,
-  // color: vars.colors.inherit,
+  backgroundColor: vars.colors.transparent,
+  color: vars.colors.inherit,
 });
 
 const select = resetStyles([

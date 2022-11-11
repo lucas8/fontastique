@@ -1,23 +1,29 @@
-export type Mode = 'dark';
+export const transitions = {
+  slow: 'transform .3s ease, opacity .3s ease',
+  fast: 'transform .15s ease, opacity .15s ease',
+};
 
 export const colors = {
-  // base
-  brand: '#8E94E4',
-  black: 'rgb(0, 0, 0)',
-  white: 'rgb(255, 255, 255)',
+  backgroundPrimary: '#DFD0BF',
+  backgroundSecondary: '#CBBCAC',
+  textPrimary: '#11100F',
+  textSecondary: '#9D9285',
+  stroke: '#11100F',
+
   current: 'currentColor',
   inherit: 'inherit',
   transparent: 'transparent',
   none: 'none',
+};
 
-  //dark
-  background: '#101010',
-  backgroundSecondary: '#282828',
-  accent: '#E6E6EB',
-  darkAccent: '#404040',
-  text: '#ffffff',
-  textSecondary: 'rgba(255, 255, 255, 0.5);',
-  stroke: '#C9C9D1',
+export const borderStyles = {
+  solid: 'solid',
+};
+
+export const opacity = {
+  '0': '0',
+  '50': '0.5',
+  '100': '1',
 };
 
 export const borderWidths = {
@@ -95,12 +101,20 @@ export const letterSpacing = {
 };
 
 export const fonts = {
-  header: "'ABC Marfa Mono'",
-  body: 'TWK Lausanne, sans-serif',
+  // TODO: BUY A LICENCE LMFAO
+  heading: 'VC Henrietta Trial, "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif',
+  body: 'Mona Sans, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+  mono: 'IBM Plex Mono, "Roboto Mono", Menlo, monospace',
 };
 
 export const lineHeights = {
-  body: '1.2',
+  normal: 'normal',
+  none: '1',
+  '1.25': '1.25', // tight
+  '1.375': '1.375', // snug
+  '1.5': '1.5', // normal
+  '1.625': '1.625', // relaxed
+  '2': '2', // loose
 };
 
 export const fontWeights = {

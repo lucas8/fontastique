@@ -1,6 +1,6 @@
 import React from 'react';
 import { RootStoreProvider } from '~/contexts';
-import { Layout, ThemeProvider } from '~/components';
+import { Box, Layout, ThemeProvider } from '~/components';
 import { useSnapshot } from '~/hooks';
 
 import '~/styles/app.css';
@@ -16,7 +16,11 @@ const App = () => {
   return (
     <RootStoreProvider snapshot={snapshot}>
       <ThemeProvider>
-        <Layout>yo</Layout>
+        <Layout>
+          <Box as="h1" margin="10">
+            Yooo what is up
+          </Box>
+        </Layout>
       </ThemeProvider>
     </RootStoreProvider>
   );

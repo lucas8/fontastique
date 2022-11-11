@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '../ui';
 import * as styles from './styles.css';
 
 type LayoutProps = {
@@ -8,7 +9,9 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <main className={styles.container}>{children}</main>
+      <Box as="main" className={styles.container}>
+        {children}
+      </Box>
     </>
   );
 };
