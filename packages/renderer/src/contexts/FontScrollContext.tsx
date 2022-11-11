@@ -1,3 +1,4 @@
+import React from 'react';
 import { useVirtualizer, Virtualizer } from '@tanstack/react-virtual';
 import { observer } from 'mobx-react-lite';
 import { createContext } from 'react';

@@ -7,8 +7,13 @@ export class FontStore extends BaseStore<Font> {
   @observable
   public activeFont: Font | null = null;
 
+  constructor(rootStore: RootStore) {
+    super(rootStore, Font);
+    makeObservable(this);
+  }
+
   @computed
-  public get all(): Font[] {
+  public get all() {
     return Array.from(this.data.values());
   }
 
@@ -16,10 +21,5 @@ export class FontStore extends BaseStore<Font> {
   public setActiveFont(font: Font) {
     this.activeFont = font;
     this.rootStore.ui.setScrollCaptured(true);
-  }
-
-  constructor(rootStore: RootStore) {
-    super(rootStore, Font);
-    makeObservable(this);
   }
 }

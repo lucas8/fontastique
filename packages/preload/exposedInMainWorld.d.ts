@@ -1,9 +1,12 @@
-import { getAvailableFontsSync } from 'font-scanner';
+// eslint-disable-next-line
+import { FontDescriptor } from 'font-scanner';
 
 declare global {
   interface Window {
     readonly version: number;
 
-    readonly api: { getAvailableFontsSync: typeof getAvailableFontsSync };
+    readonly api: {
+      initialSnapshot: Promise<TSnapshot>;
+    };
   }
 }

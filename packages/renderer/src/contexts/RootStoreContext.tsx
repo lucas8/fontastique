@@ -1,6 +1,9 @@
-import React, { createContext, useEffect } from 'react';
+import React, { createContext } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
-import { createRootStore, RootStore, TSnapshot } from '~/stores';
+import { createRootStore, RootStore } from '~/stores';
+
+// singleton reference to our store
+let rootStore: RootStore;
 
 export const RootStoreContext = createContext<RootStore | null>(null);
 
@@ -10,15 +13,7 @@ type RootStoreProviderProps = {
 };
 
 export const RootStoreProvider: React.FC<RootStoreProviderProps> = ({ children, snapshot }) => {
-  const root = useLocalObservable(() => createRootStore());
-
-  useEffect(() => {
-    if (snapshot.length === 0) {
-      return;
-    }
-
-    root.load(snapshot);
-  }, [snapshot]);
+  const root = useLocalObservable(() => rootStore ?? (rootStore = createRootStore(snapshot)));
 
   return <RootStoreContext.Provider value={root}>{children}</RootStoreContext.Provider>;
 };

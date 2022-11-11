@@ -1,16 +1,23 @@
 import { computed, observable, set } from 'mobx';
 import { FontStore } from '~/stores/FontStore';
-import { Model } from './primitives';
+import { Model, Property } from './primitives';
 
 export class Font extends Model<FontStore> {
+  public static readonly __typename = 'Font';
+
   @observable
+  @Property()
   public name = '';
 
-  @observable
-  public postscriptName = '';
+  constructor(store: FontStore, fields: Partial<Font> = {}) {
+    super(store);
+    set(this, fields);
+  }
 
-  // this repersents the type of the object in the db
-  public static __typename = 'Font';
+  @computed
+  public get weights() {
+    return this.store.rootStore.fontWeights.all.filter(fw => fw.font_id === this.id);
+  }
 
   @computed
   public get scrollIndex() {
@@ -25,10 +32,5 @@ export class Font extends Model<FontStore> {
   @computed
   get isNonActiveDarkCard() {
     return this.store.rootStore.ui.isScrollCaptured && !this.isActive;
-  }
-
-  constructor(fields: Partial<Font> = {}, store: FontStore) {
-    super(store);
-    set(this, fields);
   }
 }

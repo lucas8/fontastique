@@ -7,13 +7,13 @@ export class UiStore {
 
   rootStore: RootStore;
 
-  @action
-  public setScrollCaptured(isScrollCaptured: boolean) {
-    this.isScrollCaptured = isScrollCaptured;
-  }
-
   constructor(rootStore: RootStore) {
     makeObservable(this);
     this.rootStore = rootStore;
+  }
+
+  @action
+  public setScrollCaptured(isScrollCaptured: boolean) {
+    this.isScrollCaptured = isScrollCaptured;
   }
 }
