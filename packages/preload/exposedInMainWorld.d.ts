@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { FontDescriptor } from 'font-scanner';
 
 declare global {
@@ -5,7 +6,7 @@ declare global {
     readonly version: number;
 
     readonly api: {
-      getFonts: () => Promise<FontDescriptor[]>;
+      initialSnapshot: Promise<TSnapshot>;
     };
   }
 }

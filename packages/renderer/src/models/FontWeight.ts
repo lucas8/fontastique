@@ -2,7 +2,7 @@ import { computed, observable, set } from 'mobx';
 import { FontWeightStore } from '~/stores/FontWeightStore';
 import { Model, Property } from './primitives';
 
-type TFontWeight = 300 | 400 | 500 | 600 | 700;
+export type TFontWeight = 300 | 400 | 500 | 600 | 700;
 
 export class FontWeight extends Model<FontWeightStore> {
   public static readonly __typename = 'FontWeight';

@@ -11,6 +11,7 @@ const App = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const snapshot = useSnapshot();
 
+  // TODO: make this look nicer lol
   if (snapshot.length === 0) {
     return <span>loading...</span>;
   }

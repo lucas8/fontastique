@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
-import { createRootStore, RootStore, TSnapshot } from '~/stores';
+import { createRootStore, RootStore } from '~/stores';
 
 // singleton reference to our store
 let rootStore: RootStore;

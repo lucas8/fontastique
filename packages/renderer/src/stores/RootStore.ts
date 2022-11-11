@@ -3,12 +3,6 @@ import { FontStore } from './FontStore';
 import { FontWeightStore } from './FontWeightStore';
 import { UiStore } from './UiStore';
 
-// we'll use the term snapshot to define a plain object representation of the store
-// this will either come from the local database, or be loaded from the server
-// TODO: more strictly define what this schema will look like
-export type TSnapshotItem = { __typename: string; [key: string]: any };
-export type TSnapshot = Array<TSnapshotItem>;
-
 export class RootStore {
   fonts: FontStore;
   fontWeights: FontWeightStore;
