@@ -1,4 +1,4 @@
-import { computed, observable, set } from 'mobx';
+import { computed, makeObservable, observable, set } from 'mobx';
 import { FontWeightStore } from '~/stores/FontWeightStore';
 import { Model } from './primitives';
 
@@ -25,13 +25,15 @@ export class FontWeight extends Model<FontWeightStore> {
   @observable
   public postscriptName = '';
 
+  constructor(store: FontWeightStore, fields: Partial<FontWeight> = {}) {
+    super(store);
+    makeObservable(this);
+
+    set(this, fields);
+  }
+
   @computed
   public get font() {
     return this.store.rootStore.fonts.all.find(font => font.id === this.font_id);
-  }
-
-  constructor(store: FontWeightStore, fields: Partial<FontWeight> = {}) {
-    super(store);
-    set(this, fields);
   }
 }

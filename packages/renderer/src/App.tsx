@@ -1,6 +1,6 @@
 import React from 'react';
 import { RootStoreProvider } from '~/contexts';
-import { Box, Layout, ThemeProvider } from '~/components';
+import { Box, FontList, FontPreview, Layout, ThemeProvider } from '~/components';
 import { useSnapshot } from '~/hooks';
 
 import '~/styles/app.css';
@@ -10,16 +10,15 @@ const App = () => {
 
   // TODO: make this look nicer lol
   if (snapshot.length === 0) {
-    return <span>loading...</span>;
+    return <Box />;
   }
 
   return (
     <RootStoreProvider snapshot={snapshot}>
       <ThemeProvider>
         <Layout>
-          <Box as="h1" margin="10">
-            Yooo what is up
-          </Box>
+          <FontList />
+          <FontPreview />
         </Layout>
       </ThemeProvider>
     </RootStoreProvider>

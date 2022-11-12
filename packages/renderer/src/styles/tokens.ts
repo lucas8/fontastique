@@ -28,6 +28,7 @@ export const opacity = {
 
 export const borderWidths = {
   '0': '0px',
+  half: '0.5px',
   px: '1px',
   '0.375': '0.09375rem',
   '0.5': '0.125rem',
@@ -128,9 +129,9 @@ export const fontWeights = {
 export const fontSizes = {
   largeHeading: '36px',
   heading: '24px',
-  title: '18px',
+  title: '20px',
   body: '16px',
-  caption: '14px',
+  caption: '12px',
 };
 
 export const borderRadii = {

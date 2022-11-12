@@ -12,14 +12,13 @@ export class FontStore extends BaseStore<Font> {
     makeObservable(this);
   }
 
+  @action.bound
+  public setActiveFont(font: Font) {
+    this.activeFont = font;
+  }
+
   @computed
   public get all() {
     return Array.from(this.data.values());
-  }
-
-  @action
-  public setActiveFont(font: Font) {
-    this.activeFont = font;
-    this.rootStore.ui.setScrollCaptured(true);
   }
 }
