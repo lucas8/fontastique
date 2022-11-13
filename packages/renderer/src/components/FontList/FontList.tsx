@@ -1,10 +1,11 @@
-import React from 'react';
-import { observer } from 'mobx-react-lite';
-import { useStore } from '~/hooks';
-import { FontListItem } from '~/components';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import { observer } from 'mobx-react-lite';
+import clsx from 'clsx';
+import { useStore } from '~/hooks';
+import { Box, FontListItem } from '~/components';
 import * as styles from './styles.css';
+import { noScrollBars } from '~/styles';
 
 export const FontList = observer(() => {
   const { fonts } = useStore();
@@ -13,24 +14,22 @@ export const FontList = observer(() => {
   const virtualizer = useVirtualizer({
     count: fonts.all.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 60 + 10,
+    estimateSize: () => 50,
     overscan: 50,
   });
 
   return (
-    <div ref={parentRef} className={styles.container}>
-      <div
-        className={styles.divider({ position: 'top', active: (parentRef.current?.scrollTop || 0) > 20 })}
-        style={{ maxWidth: parentRef.current?.clientWidth }}
-      />
-      <ul
+    <Box ref={parentRef} className={clsx(styles.container, noScrollBars)}>
+      <Box
+        as="ul"
         className={styles.innerList}
         style={{
           height: `${virtualizer.getTotalSize()}px`,
         }}
       >
         {virtualizer.getVirtualItems().map(item => (
-          <li
+          <Box
+            as="li"
             key={item.index}
             style={{
               position: 'absolute',
@@ -42,16 +41,9 @@ export const FontList = observer(() => {
             }}
           >
             <FontListItem font={fonts.all[item.index]} />
-          </li>
+          </Box>
         ))}
-      </ul>
-      <div
-        className={styles.divider({
-          position: 'bottom',
-          active: true,
-        })}
-        style={{ maxWidth: parentRef.current?.clientWidth }}
-      />
-    </div>
+      </Box>
+    </Box>
   );
 });

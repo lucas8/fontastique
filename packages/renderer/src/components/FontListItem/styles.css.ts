@@ -1,45 +1,52 @@
-import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import { sprinkles } from '~/styles';
 
 export const container = recipe({
-  base: style([
-    style({ height: 70 }),
-    sprinkles({
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      gap: 1,
-      px: 2,
-      py: 2,
-      borderRadius: 'small',
-      cursor: 'pointer',
-    }),
-  ]),
+  base: sprinkles({
+    borderYWidth: 'half',
+    width: 'full',
+    height: 'full',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingX: '2.5',
+    cursor: 'default',
+  }),
   variants: {
-    isActive: {
+    active: {
       true: sprinkles({ backgroundColor: 'backgroundSecondary' }),
     },
   },
 });
 
-export const title = sprinkles({
-  fontFamily: 'body',
-  fontSize: 'title',
-  fontWeight: 'bold',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-  letterSpacing: 'default',
-  overflow: 'hidden',
+export const textWrapper = sprinkles({
+  display: 'flex',
+  alignItems: 'baseline',
+  gap: '0.5',
+  width: 'full',
 });
 
-export const caption = sprinkles({
-  fontFamily: 'header',
-  fontSize: 'caption',
+// TODO: create pre-defined text guidelines
+export const count = sprinkles({
+  fontFamily: 'mono',
   fontWeight: 'medium',
   color: 'textSecondary',
+  fontSize: 'caption',
+});
+
+export const title = sprinkles({
+  fontSize: 'title',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-  letterSpacing: 'default',
   overflow: 'hidden',
+  letterSpacing: '0.03',
+  width: 'full',
+  maxWidth: '48',
+});
+
+export const fontPreview = sprinkles({
+  letterSpacing: '0.03',
+  fontSize: 'heading',
+  textAlign: 'right',
+  lineHeight: '2',
 });

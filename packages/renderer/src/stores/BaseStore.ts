@@ -17,7 +17,7 @@ export abstract class BaseStore<T extends Model<any>> {
     this.model = model;
   }
 
-  @action
+  @action.bound
   public create(fields: Partial<T>): T {
     const ModelClass = this.model;
     const newModel = new ModelClass(this, fields);
@@ -27,7 +27,7 @@ export abstract class BaseStore<T extends Model<any>> {
     return newModel;
   }
 
-  @action
+  @action.bound
   public hydrate(items: Partial<T>[]) {
     return items.forEach(item => this.create(item));
   }

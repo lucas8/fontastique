@@ -1,28 +1,34 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { useStore } from '~/hooks';
-import { useFontScroll } from '~/hooks/useFontScroll';
 import { Font } from '~/models';
+import { Box } from '~/components';
 import * as styles from './styles.css';
+import { vars } from '~/styles';
 
 type FontListItemProps = {
   font: Font;
 };
 
-export const FontListItem = observer<FontListItemProps>(({ font }) => {
-  const { scrollToId } = useFontScroll();
-  const { fonts } = useStore();
-
+export const FontListItem = observer(({ font }: FontListItemProps) => {
   return (
-    <div
-      className={styles.container({ isActive: font.isActive })}
-      onClick={() => {
-        fonts.setActiveFont(font);
-        scrollToId(font.scrollIndex);
-      }}
-    >
-      <span className={styles.title}>{font.name}</span>
-      <span className={styles.caption}>{font.name}</span>
-    </div>
+    <Box className={styles.container({ active: font.isActive })} onClick={font.setActive}>
+      <Box className={styles.textWrapper}>
+        <Box as="span" className={styles.count}>
+          {font.displayIndex < 10 ? '0' : ''}
+          {font.displayIndex}.
+        </Box>
+        <Box as="h4" className={styles.title}>
+          {font.name}
+        </Box>
+      </Box>
+      {/* TODO: find bold weight */}
+      <Box
+        as="h4"
+        className={styles.fontPreview}
+        style={{ fontFamily: `${font.weights[0].postscriptName}, ${vars.fonts.body}`, fontWeight: 'bold' }}
+      >
+        Aa
+      </Box>
+    </Box>
   );
 });

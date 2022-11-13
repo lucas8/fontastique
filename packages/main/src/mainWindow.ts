@@ -8,12 +8,10 @@ async function createWindow() {
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
     width: 800,
     height: 540,
-    // minWidth: 800,
-    // minHeight: 612,
+    maxWidth: 800,
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: false,
-      nodeIntegrationInWorker: true,
       contextIsolation: true,
       sandbox: false, // Sandbox disabled because the demo of preload script depend on the Node.js api
       webviewTag: false, // The webview tag is not recommended. Consider alternatives like an iframe or Electron's BrowserView. @see https://www.electronjs.org/docs/latest/api/webview-tag#warning

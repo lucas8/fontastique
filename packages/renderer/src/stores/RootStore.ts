@@ -1,16 +1,13 @@
 import { BaseStore } from './BaseStore';
 import { FontStore } from './FontStore';
 import { FontWeightStore } from './FontWeightStore';
-import { UiStore } from './UiStore';
 
 export class RootStore {
   fonts: FontStore;
   fontWeights: FontWeightStore;
-  ui: UiStore;
 
   constructor(snapshot: TSnapshot) {
     this.fonts = new FontStore(this);
-    this.ui = new UiStore(this);
     this.fontWeights = new FontWeightStore(this);
 
     this._hydrate(snapshot);

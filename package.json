@@ -36,7 +36,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-spring": "^9.5.5",
-    "reflect-metadata": "^0.1.13",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
