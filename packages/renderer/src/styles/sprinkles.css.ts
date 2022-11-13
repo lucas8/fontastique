@@ -75,7 +75,7 @@ const properties = defineProperties({
     zIndex: ['-1', '0', '1'],
     pointerEvents: ['none', 'auto'],
     cursor: ['pointer', 'default'],
-    textOverflow: ['ellipsis'],
+    textOverflow: ['ellipsis', 'clip'],
     whiteSpace: ['initial', 'nowrap', 'normal'],
   },
   shorthands: {

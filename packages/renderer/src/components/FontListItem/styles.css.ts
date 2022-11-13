@@ -8,7 +8,8 @@ export const container = recipe({
     height: 'full',
     display: 'flex',
     alignItems: 'center',
-    paddingX: '4',
+    justifyContent: 'space-between',
+    paddingX: '2.5',
     cursor: 'default',
   }),
   variants: {
@@ -21,7 +22,7 @@ export const container = recipe({
 export const textWrapper = sprinkles({
   display: 'flex',
   alignItems: 'baseline',
-  gap: '2',
+  gap: '0.5',
   width: 'full',
 });
 
@@ -35,9 +36,17 @@ export const count = sprinkles({
 
 export const title = sprinkles({
   fontSize: 'title',
-  width: 'full',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   letterSpacing: '0.03',
+  width: 'full',
+  maxWidth: '48',
+});
+
+export const fontPreview = sprinkles({
+  letterSpacing: '0.03',
+  fontSize: 'heading',
+  textAlign: 'right',
+  lineHeight: '2',
 });

@@ -104,7 +104,7 @@ export const letterSpacing = {
 export const fonts = {
   // TODO: BUY A LICENCE LMFAO
   heading: 'VC Henrietta Trial, "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif',
-  body: 'Mona Sans, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+  body: 'Hubot-Sans, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
   mono: 'IBM Plex Mono, "Roboto Mono", Menlo, monospace',
 };
 
