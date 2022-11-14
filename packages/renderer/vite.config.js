@@ -4,7 +4,6 @@ import { chrome } from '../../.electron-vendors.cache.json';
 import { join } from 'path';
 import react from '@vitejs/plugin-react';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
-import swc from 'unplugin-swc';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -38,22 +37,7 @@ const config = {
     emptyOutDir: true,
     reportCompressedSize: false,
   },
-  esbuild: false,
   plugins: [
-    swc.vite({
-      jsc: {
-        parser: {
-          syntax: 'typescript',
-          tsx: true,
-          dynamicImport: true,
-          decorators: true,
-        },
-        target: 'es2021',
-        transform: {
-          decoratorMetadata: true,
-        },
-      },
-    }),
     react(),
     vanillaExtractPlugin({
       identifiers: 'short',
