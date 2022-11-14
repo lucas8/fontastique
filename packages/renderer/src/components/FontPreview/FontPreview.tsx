@@ -16,12 +16,14 @@ export const FontPreview = observer(() => {
 
   return (
     <Box className={styles.container}>
-      <Text as="h1" size="largeHeading" font="heading">
+      <Text as="h1" size="largeHeading" font="heading" marginBottom="4">
         {font.name}
       </Text>
-      {font.weights.map(fontWeight => (
-        <FontWeight key={fontWeight.id} fontWeight={fontWeight} />
-      ))}
+      <Box className={styles.weightWrapper}>
+        {font.weights.map(fontWeight => (
+          <FontWeight key={fontWeight.id} fontWeight={fontWeight} />
+        ))}
+      </Box>
     </Box>
   );
 });

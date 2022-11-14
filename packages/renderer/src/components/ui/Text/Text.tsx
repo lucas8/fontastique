@@ -15,6 +15,7 @@ type TextProps = {
   whiteSpace?: BoxProps['whiteSpace'];
   maxWidth?: BoxProps['maxWidth'];
   style?: BoxProps['style'];
+  marginBottom?: BoxProps['marginBottom'];
 } & styles.Variants;
 
 export const Text = forwardRef(

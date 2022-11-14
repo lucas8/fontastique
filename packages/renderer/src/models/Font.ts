@@ -22,7 +22,12 @@ export class Font extends Model<FontStore> {
 
   @computed
   public get weights() {
-    return this.store.rootStore.fontWeights.all.filter(fw => fw.font_id === this.id);
+    return (
+      this.store.rootStore.fontWeights.all
+        .filter(fw => fw.font_id === this.id)
+        // sort by weight
+        .sort((a, b) => a.weight - b.weight)
+    );
   }
 
   @computed
