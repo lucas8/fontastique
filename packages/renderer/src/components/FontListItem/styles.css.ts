@@ -25,27 +25,3 @@ export const textWrapper = sprinkles({
   gap: '0.5',
   width: 'full',
 });
-
-export const count = sprinkles({
-  fontFamily: 'mono',
-  fontWeight: 'medium',
-  color: 'textSecondary',
-  fontSize: 'caption',
-});
-
-export const title = sprinkles({
-  fontSize: 'title',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  letterSpacing: '0.03',
-  width: 'full',
-  maxWidth: '48',
-});
-
-export const fontPreview = sprinkles({
-  letterSpacing: '0.03',
-  fontSize: 'heading',
-  textAlign: 'right',
-  lineHeight: '2',
-});

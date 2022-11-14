@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { Box } from '~/components';
+import { Box, FontWeight, Text } from '~/components';
 import { useStore } from '~/hooks';
 import * as styles from './styles.css';
 
@@ -16,12 +16,12 @@ export const FontPreview = observer(() => {
 
   return (
     <Box className={styles.container}>
-      <Box as="h1" className={styles.title}>
+      <Text as="h1" size="largeHeading" font="heading">
         {font.name}
-      </Box>
-      {font.weights.map(fontWeight => {
-        return <p>{fontWeight.postscriptName}</p>;
-      })}
+      </Text>
+      {font.weights.map(fontWeight => (
+        <FontWeight key={fontWeight.id} fontWeight={fontWeight} />
+      ))}
     </Box>
   );
 });

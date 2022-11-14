@@ -5,8 +5,3 @@ export const container = sprinkles({
   paddingX: '4',
   overflowX: 'scroll',
 });
-
-export const title = sprinkles({
-  fontSize: 'largeHeading',
-  fontFamily: 'heading',
-});

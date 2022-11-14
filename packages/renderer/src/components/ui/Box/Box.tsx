@@ -3,15 +3,14 @@ import { createElement, AllHTMLAttributes, ElementType, forwardRef } from 'react
 import { sprinkles, Sprinkles } from '~/styles/sprinkles.css';
 import * as reset from '~/styles/reset.css';
 
-export interface BoxProps
-  extends Omit<
-      AllHTMLAttributes<HTMLElement>,
-      'className' | 'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'as'
-    >,
-    Sprinkles {
-  as?: ElementType;
-  className?: Parameters<typeof clsx>[0];
-}
+export type BoxProps = Omit<
+  AllHTMLAttributes<HTMLElement>,
+  'className' | 'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'as'
+> &
+  Sprinkles & {
+    as?: ElementType;
+    className?: Parameters<typeof clsx>[0];
+  };
 
 export const Box = forwardRef(
   (
@@ -19,6 +18,10 @@ export const Box = forwardRef(
       as: asElement = 'div',
       className,
       fontFamily,
+      fontWeight,
+      letterSpacing,
+      lineHeight,
+      whiteSpace,
       fontSize,
       padding,
       paddingX,
@@ -69,6 +72,10 @@ export const Box = forwardRef(
       reset.element[asElement as keyof typeof reset.element],
       sprinkles({
         fontFamily,
+        fontWeight,
+        letterSpacing,
+        lineHeight,
+        whiteSpace,
         fontSize,
         padding,
         paddingX,

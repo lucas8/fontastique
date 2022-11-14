@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Font } from '~/models';
-import { Box } from '~/components';
+import { Box, Text } from '~/components';
 import * as styles from './styles.css';
 import { vars } from '~/styles';
 
@@ -13,22 +13,25 @@ type FontListItemProps = {
 export const FontListItem = observer(({ font }: FontListItemProps) => {
   return (
     <Box className={styles.container({ active: font.isActive })} onClick={font.setActive}>
-      <Box className={styles.textWrapper}>
-        <Box as="span" className={styles.count}>
+      <Box className={styles.textWrapper} style={{ flex: '1' }}>
+        <Text as="span" font="mono" weight="medium" color="textSecondary" size="caption">
           {font.displayIndex < 10 ? '0' : ''}
           {font.displayIndex}.
-        </Box>
-        <Box as="h4" className={styles.title}>
+        </Text>
+        <Text maxWidth="48" size="title" weight="bold" ellipsis={true} letterSpacing="0.03">
           {font.name}
-        </Box>
+        </Text>
       </Box>
-      <Box
-        as="h4"
-        className={styles.fontPreview}
-        style={{ fontFamily: `${font.name}, ${vars.fonts.body}`, fontWeight: 'bold' }}
+      <Text
+        letterSpacing="0.03"
+        size="heading"
+        align="right"
+        lineHeight="2"
+        weight="bold"
+        style={{ fontFamily: `${font.name}, ${vars.fonts.body}` }}
       >
         Aa
-      </Box>
+      </Text>
     </Box>
   );
 });
