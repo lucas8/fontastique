@@ -25,11 +25,3 @@ export const input = style({
     },
   },
 });
-/*
-	-webkit-appearance: none;
-	height: 7px;
-	background: grey;
-	border-radius: 5px;
-	background-image: linear-gradient(#d46a6a, #d46a6a);
-	background-repeat: no-repeat;
-  */
