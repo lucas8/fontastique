@@ -1,23 +1,28 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { Box } from '~/components';
+import { Box, FontWeight, Text } from '~/components';
 import { useStore } from '~/hooks';
 import * as styles from './styles.css';
 
 export const FontPreview = observer(() => {
   const {
-    fonts: { activeFont },
+    fonts: { activeFont: font },
   } = useStore();
 
   // TODO: add null state
-  if (!activeFont) {
+  if (!font) {
     return null;
   }
 
   return (
     <Box className={styles.container}>
-      <Box as="h1" className={styles.title}>
-        {activeFont.name}
+      <Text as="h1" size="largeHeading" font="heading" marginBottom="5">
+        {font.name}
+      </Text>
+      <Box className={styles.weightWrapper}>
+        {font.weights.map(fontWeight => (
+          <FontWeight key={fontWeight.id} fontWeight={fontWeight} />
+        ))}
       </Box>
     </Box>
   );
