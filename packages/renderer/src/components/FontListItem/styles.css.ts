@@ -26,7 +26,6 @@ export const textWrapper = sprinkles({
   width: 'full',
 });
 
-// TODO: create pre-defined text guidelines
 export const count = sprinkles({
   fontFamily: 'mono',
   fontWeight: 'medium',

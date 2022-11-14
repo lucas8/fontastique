@@ -70,6 +70,8 @@ const properties = defineProperties({
     opacity: vars.opacity,
     borderStyle: vars.borderStyles,
     overflow: ['auto', 'hidden', 'scroll', 'unset'],
+    overflowX: ['auto', 'hidden', 'scroll', 'unset'],
+    overflowY: ['auto', 'hidden', 'scroll', 'unset'],
     textAlign: ['center', 'left', 'right'],
     position: ['absolute', 'fixed', 'relative', 'sticky'],
     zIndex: ['-1', '0', '1'],

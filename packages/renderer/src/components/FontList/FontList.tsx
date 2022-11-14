@@ -18,6 +18,7 @@ export const FontList = observer(() => {
     overscan: 50,
   });
 
+  // TODO: add back scroll bar
   return (
     <Box ref={parentRef} className={clsx(styles.container, noScrollBars)}>
       <Box

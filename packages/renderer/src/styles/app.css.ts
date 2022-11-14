@@ -15,4 +15,5 @@ globalStyle('#root', {
   textRendering: 'optimizeLegibility',
   lineHeight: vars.lineHeights.none,
   fontFamily: vars.fonts.body,
+  minHeight: vars.space.viewHeight,
 });

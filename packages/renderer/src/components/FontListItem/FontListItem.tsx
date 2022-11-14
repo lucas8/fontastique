@@ -9,6 +9,7 @@ type FontListItemProps = {
   font: Font;
 };
 
+// TODO: check if this method of rendering fonts works on linux/windows
 export const FontListItem = observer(({ font }: FontListItemProps) => {
   return (
     <Box className={styles.container({ active: font.isActive })} onClick={font.setActive}>
@@ -21,11 +22,10 @@ export const FontListItem = observer(({ font }: FontListItemProps) => {
           {font.name}
         </Box>
       </Box>
-      {/* TODO: find bold weight */}
       <Box
         as="h4"
         className={styles.fontPreview}
-        style={{ fontFamily: `${font.weights[0].postscriptName}, ${vars.fonts.body}`, fontWeight: 'bold' }}
+        style={{ fontFamily: `${font.name}, ${vars.fonts.body}`, fontWeight: 'bold' }}
       >
         Aa
       </Box>
