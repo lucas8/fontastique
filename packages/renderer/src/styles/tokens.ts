@@ -138,4 +138,5 @@ export const borderRadii = {
   0: '0',
   small: '14px',
   large: '26px',
+  circle: '50%',
 };

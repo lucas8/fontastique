@@ -16,7 +16,7 @@ export const FontPreview = observer(() => {
 
   return (
     <Box className={styles.container}>
-      <Text as="h1" size="largeHeading" font="heading" marginBottom="4">
+      <Text as="h1" size="largeHeading" font="heading" marginBottom="5">
         {font.name}
       </Text>
       <Box className={styles.weightWrapper}>
