@@ -3,7 +3,7 @@ import { sprinkles, vars } from '~/styles';
 
 export const headerContainer = sprinkles({
   display: 'flex',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'space-between',
 });
 

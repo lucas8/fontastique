@@ -9,5 +9,5 @@ export const container = sprinkles({
 export const weightWrapper = sprinkles({
   display: 'flex',
   flexDirection: 'column',
-  gap: '4',
+  gap: '6',
 });

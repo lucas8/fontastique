@@ -14,8 +14,8 @@ export const FontWeight = observer<FontWeightProps>(({ fontWeight }) => {
 
   return (
     <Box>
-      <Box className={styles.headerContainer}>
-        <Text marginBottom="2" letterSpacing="0.03" size="body" color="textSecondary" weight="medium" ellipsis>
+      <Box className={styles.headerContainer} marginBottom="2">
+        <Text letterSpacing="0.03" size="body" color="textSecondary" weight="medium" ellipsis>
           {fontWeight.font?.name} &#8212; {fontWeight.weight}
           {fontWeight.italic && <>&#8212; italic</>}
         </Text>
