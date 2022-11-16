@@ -5,6 +5,10 @@ export const draggable = style({
   ['-webkit-user-select' as any]: 'none',
 });
 
+export const nonDraggable = style({
+  ['-webkit-app-region' as any]: 'no-drag',
+});
+
 export const noScrollBars = style({
   selectors: {
     '[data-js-focus-visible] &:focus:not([data-focus-visible-added])': {

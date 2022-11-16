@@ -8,8 +8,9 @@ async function createWindow() {
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
     width: 800,
     height: 540,
-    // maxWidth: 800,
-    titleBarStyle: 'hidden',
+    titleBarStyle: 'customButtonsOnHover',
+    backgroundColor: '#DFD0BF',
+    title: 'Typescape',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,

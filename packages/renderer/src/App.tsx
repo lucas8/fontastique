@@ -1,6 +1,6 @@
 import React from 'react';
 import { RootStoreProvider } from '~/contexts';
-import { FontList, FontPreview, Layout, ThemeProvider } from '~/components';
+import { DragArea, FontList, FontPreview, Layout, ThemeProvider, WindowControls } from '~/components';
 import { useSnapshot } from '~/hooks';
 
 import '~/styles/app.css';
@@ -15,6 +15,8 @@ const App = () => {
   return (
     <RootStoreProvider snapshot={snapshot}>
       <ThemeProvider>
+        <DragArea />
+        <WindowControls />
         <Layout>
           <FontList />
           <FontPreview />

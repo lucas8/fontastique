@@ -5,7 +5,7 @@ import * as reset from '~/styles/reset.css';
 
 export type BoxProps = Omit<
   AllHTMLAttributes<HTMLElement>,
-  'className' | 'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'as'
+  'className' | 'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'as' | 'textTransform'
 > &
   Sprinkles & {
     as?: ElementType;
@@ -50,8 +50,10 @@ export const Box = forwardRef(
       bottom,
       left,
       right,
+      textTransform,
       inset,
       background,
+      backgroundColor,
       color,
       width,
       zIndex,
@@ -63,6 +65,8 @@ export const Box = forwardRef(
       minWidth,
       transition,
       overflow,
+      gap,
+      height,
       ...restProps
     }: BoxProps,
     ref,
@@ -74,6 +78,10 @@ export const Box = forwardRef(
         fontFamily,
         fontWeight,
         letterSpacing,
+        backgroundColor,
+        textTransform,
+        gap,
+        height,
         lineHeight,
         whiteSpace,
         fontSize,

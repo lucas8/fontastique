@@ -68,6 +68,7 @@ export const space = {
   '14': '3.5rem',
   '15': '3.75rem',
   '16': '4rem',
+  '18': '4.375rem',
   '20': '5rem',
   '24': '6rem',
   '28': '7rem',
@@ -138,5 +139,6 @@ export const borderRadii = {
   0: '0',
   small: '14px',
   large: '26px',
+  full: '1000px',
   circle: '50%',
 };
