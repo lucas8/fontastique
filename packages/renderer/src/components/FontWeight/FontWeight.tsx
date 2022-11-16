@@ -5,6 +5,7 @@ import { Box, Tag, Text } from '~/components';
 import { vars } from '~/styles';
 import * as styles from './styles.css';
 import { getFontWeightName } from '~/utils';
+import { FontName } from './FontName';
 
 getFontWeightName;
 type FontWeightProps = {
@@ -15,13 +16,11 @@ export const FontWeight = observer<FontWeightProps>(({ fontWeight }) => {
   return (
     <Box display="flex" gap="4" flexDirection="column">
       <Box className={styles.headerContainer}>
-        <Text letterSpacing="0.03" size="body" weight="medium" ellipsis lineHeight="none">
-          {fontWeight.weightName}
-        </Text>
+        <FontName fontWeight={fontWeight} />
         {fontWeight.italic && (
-          <Tag>
-            <i>itallic</i>
-          </Tag>
+          <i>
+            <Tag>itallic</Tag>
+          </i>
         )}
       </Box>
       <Box paddingX="4">

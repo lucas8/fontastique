@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { forwardRef } from 'react';
 import { Box, BoxProps } from '../Box';
 import * as styles from './styles.css';
@@ -18,19 +19,24 @@ type TextProps = {
   marginBottom?: BoxProps['marginBottom'];
   textTransform?: BoxProps['textTransform'];
   display?: BoxProps['display'];
+  height?: BoxProps['height'];
+  className?: BoxProps['className'];
 } & styles.Variants;
 
 export const Text = forwardRef(
   (
-    { as = 'div', color = 'textPrimary', font = 'body', ellipsis, size, weight, align, ...rest }: TextProps,
+    { as = 'div', color = 'textPrimary', font = 'body', ellipsis, size, weight, align, className, ...rest }: TextProps,
     ref: React.Ref<HTMLElement>,
   ) => {
     return (
       <Box
         as={as}
-        className={styles.variants({
-          ellipsis: ellipsis ? true : undefined,
-        })}
+        className={clsx(
+          styles.variants({
+            ellipsis: ellipsis ? true : undefined,
+          }),
+          className,
+        )}
         color={color}
         fontWeight={weight}
         fontFamily={font}
