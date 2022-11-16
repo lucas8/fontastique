@@ -1,5 +1,6 @@
 import { computed, makeObservable, observable, set } from 'mobx';
 import { FontWeightStore } from '~/stores/FontWeightStore';
+import { getFontWeightName } from '~/utils';
 import { Model } from './primitives';
 
 export type TFontWeight = 300 | 400 | 500 | 600 | 700;
@@ -35,5 +36,10 @@ export class FontWeight extends Model<FontWeightStore> {
   @computed
   public get font() {
     return this.store.rootStore.fonts.all.find(font => font.id === this.font_id);
+  }
+
+  @computed
+  public get weightName() {
+    return getFontWeightName(this.weight);
   }
 }

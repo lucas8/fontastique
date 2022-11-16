@@ -79,6 +79,7 @@ const properties = defineProperties({
     cursor: ['pointer', 'default'],
     textOverflow: ['ellipsis', 'clip'],
     whiteSpace: ['initial', 'nowrap', 'normal'],
+    textTransform: ['initial', 'uppercase', 'none'],
   },
   shorthands: {
     borderYWidth: ['borderTopWidth', 'borderBottomWidth'],
