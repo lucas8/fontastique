@@ -13,7 +13,6 @@ const config = {
     target: 'dmg',
     category: 'public.app-category.utilities',
     hardenedRuntime: true,
-    gatekeeperAssess: true,
   },
   afterSign: './scripts/notarize.js',
   files: ['packages/**/dist/**'],
