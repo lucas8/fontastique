@@ -9,21 +9,24 @@ const config = {
     output: 'dist',
     buildResources: 'buildResources',
   },
-  // afterSign: async context => {
-  //   // Mac releases require hardening+notarization: https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution
-  //   if (!isDebug && context.electronPlatformName === 'darwin') {
-  //     await notarizeMac(context);
-  //   }
-  // },
   mac: {
     target: 'dmg',
     category: 'public.app-category.utilities',
     hardenedRuntime: true,
-    // gatekeeperAssess: true,
+    gatekeeperAssess: true,
   },
   afterSign: './scripts/notarize.js',
   files: ['packages/**/dist/**'],
-  publish: ['github'],
+  dmg: {
+    sign: false,
+  },
+  publish: [
+    {
+      provider: 'github',
+      owner: 'lucas8',
+      repo: 'typescape',
+    },
+  ],
 };
 
 module.exports = config;
