@@ -15,38 +15,11 @@ const config = {
   //     await notarizeMac(context);
   //   }
   // },
-  dmg: {
-    background: null,
-    backgroundColor: '#DFD0BF',
-    window: {
-      width: 400,
-      height: 300,
-    },
-    contents: [
-      {
-        x: 100,
-        y: 100,
-      },
-      {
-        x: 300,
-        y: 100,
-        type: 'link',
-        path: '/Applications',
-      },
-    ],
-  },
   mac: {
     target: 'dmg',
     category: 'public.app-category.utilities',
     hardenedRuntime: true,
     // gatekeeperAssess: true,
-  },
-  win: {
-    target: 'nsis',
-  },
-  linux: {
-    target: 'AppImage',
-    category: 'Utility',
   },
   files: ['packages/**/dist/**'],
 };

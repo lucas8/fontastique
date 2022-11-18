@@ -11,3 +11,10 @@ export const container = style({
   zIndex: 1,
   opacity: 0.5,
 });
+
+export const trafficLight = style({
+  width: '12px',
+  height: '12px',
+  backgroundColor: 'textSecondary',
+  borderRadius: 'circle',
+});
