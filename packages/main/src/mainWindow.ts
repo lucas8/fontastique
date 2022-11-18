@@ -34,11 +34,8 @@ async function createWindow() {
    * @see https://github.com/electron/electron/issues/25012 for the afford mentioned issue.
    */
   browserWindow.on('ready-to-show', () => {
-    browserWindow?.show();
-  });
-
-  app.on('ready', () => {
     autoUpdater.checkForUpdatesAndNotify();
+    browserWindow?.show();
   });
 
   /**
