@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { vars } from '~/styles';
 
 export const container = style({
   position: 'absolute',
@@ -15,6 +16,6 @@ export const container = style({
 export const trafficLight = style({
   width: '12px',
   height: '12px',
-  backgroundColor: 'textSecondary',
-  borderRadius: 'circle',
+  backgroundColor: vars.colors.textSecondary,
+  borderRadius: vars.borderRadii.circle,
 });

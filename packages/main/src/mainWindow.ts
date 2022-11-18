@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import { join } from 'path';
 import { URL } from 'url';
 import { getAvailableFontsSync } from 'font-scanner';
+import { autoUpdater } from 'electron-updater';
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
@@ -34,6 +35,10 @@ async function createWindow() {
    */
   browserWindow.on('ready-to-show', () => {
     browserWindow?.show();
+  });
+
+  app.on('ready', () => {
+    autoUpdater.checkForUpdatesAndNotify();
   });
 
   /**

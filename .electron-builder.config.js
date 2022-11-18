@@ -21,7 +21,9 @@ const config = {
     hardenedRuntime: true,
     // gatekeeperAssess: true,
   },
+  afterSign: './scripts/notarize.js',
   files: ['packages/**/dist/**'],
+  publish: ['github'],
 };
 
 module.exports = config;
