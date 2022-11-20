@@ -58,9 +58,11 @@ async function createWindow() {
 export async function restoreOrCreateWindow() {
   let window = BrowserWindow.getAllWindows().find(w => !w.isDestroyed());
 
-  const menuTemplate = Menu.buildFromTemplate(getMenuTemplate());
+  if (import.meta.env.PROD) {
+    const menuTemplate = Menu.buildFromTemplate(getMenuTemplate());
 
-  Menu.setApplicationMenu(menuTemplate);
+    Menu.setApplicationMenu(menuTemplate);
+  }
 
   if (window === undefined) {
     window = await createWindow();
