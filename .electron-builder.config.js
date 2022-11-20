@@ -10,6 +10,8 @@ const config = {
     buildResources: 'buildResources',
   },
   mac: {
+    entitlements: 'buildResources/entitlements.mac.plist',
+    entitlementsInherit: 'buildResources/entitlements.mac.plist',
     target: 'default',
     category: 'public.app-category.utilities',
     hardenedRuntime: true,

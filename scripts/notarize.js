@@ -1,18 +1,35 @@
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 const { notarize } = require('electron-notarize');
 
-exports.default = async function notarizing(context) {
-  const { electronPlatformName, appOutDir } = context;
-  if (electronPlatformName !== 'darwin') {
+module.exports = async function (context) {
+  // Only notarize the app on Mac OS only.
+  if (process.platform !== 'darwin') {
     return;
   }
+  console.log('afterSign hook triggered', context);
 
-  const appName = context.packager.appInfo.productFilename;
+  // Same appId in electron-builder.
+  let appId = 'com.lucasstettner.typescape';
 
-  return await notarize({
-    appBundleId: 'com.lucasstettner.typescape',
-    appPath: `${appOutDir}/${appName}.app`,
-    appleId: process.env.APPLEID,
-    appleIdPassword: process.env.APPLEIDPASS,
-  });
+  let appPath = path.join(context.appOutDir, `${context.packager.appInfo.productFilename}.app`);
+  if (!fs.existsSync(appPath)) {
+    throw new Error(`Cannot find application at: ${appPath}`);
+  }
+
+  console.log(`Notarizing ${appId} found at ${appPath}`);
+
+  try {
+    await notarize({
+      appBundleId: appId,
+      appPath: appPath,
+      appleId: process.env.APPLE_ID,
+      appleIdPassword: process.env.APPLE_PASSWORD,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  console.log(`Done notarizing ${appId}`);
 };
