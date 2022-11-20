@@ -10,7 +10,7 @@ const config = {
     buildResources: 'buildResources',
   },
   mac: {
-    target: 'dmg',
+    target: 'default',
     category: 'public.app-category.utilities',
     hardenedRuntime: true,
   },

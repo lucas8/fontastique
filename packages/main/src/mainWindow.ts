@@ -2,7 +2,6 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import { join } from 'path';
 import { URL } from 'url';
 import { getAvailableFontsSync } from 'font-scanner';
-import { AutoUpdater } from './services';
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
@@ -20,8 +19,6 @@ async function createWindow() {
       preload: join(app.getAppPath(), 'packages/preload/dist/index.cjs'),
     },
   });
-
-  new AutoUpdater(browserWindow);
 
   ipcMain.handle('getFonts', () => {
     return getAvailableFontsSync();

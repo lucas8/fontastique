@@ -1,1 +1,1 @@
-export { AutoUpdater } from './AutoUpdater';
+export { AutoUpdaterLogger } from './AutoUpdaterLogger';
