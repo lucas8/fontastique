@@ -3,7 +3,7 @@
   "description": "The font browser built for designers.",
   "private": true,
   "main": "packages/main/dist/index.cjs",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "author": {
     "email": "lucas.stettner@gmail.com",
     "name": "Lucas Stettner"
