@@ -3,7 +3,7 @@
   "description": "The font browser built for designers.",
   "private": true,
   "main": "packages/main/dist/index.cjs",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": {
     "email": "lucas.stettner@gmail.com",
     "name": "Lucas Stettner"
@@ -30,6 +30,7 @@
     "@vanilla-extract/sprinkles": "^1.5.0",
     "@vanilla-extract/vite-plugin": "^3.6.1",
     "clsx": "^1.2.1",
+    "electron-log": "^4.4.8",
     "electron-updater": "^5.3.0",
     "font-scanner": "^0.2.1",
     "framer-motion": "^7.6.7",
