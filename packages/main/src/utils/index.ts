@@ -1,0 +1,1 @@
+export { getMenuTemplate } from './getMenuTemplate';

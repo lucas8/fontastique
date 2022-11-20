@@ -10,7 +10,7 @@ export const container = style({
   paddingTop: '8px',
   paddingLeft: '8px',
   zIndex: 1,
-  opacity: 0.5,
+  opacity: 0.3,
 });
 
 export const trafficLight = style({

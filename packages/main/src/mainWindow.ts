@@ -1,7 +1,8 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu } from 'electron';
 import { join } from 'path';
 import { URL } from 'url';
 import { getAvailableFontsSync } from 'font-scanner';
+import { getMenuTemplate } from './utils';
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
@@ -56,6 +57,10 @@ async function createWindow() {
  */
 export async function restoreOrCreateWindow() {
   let window = BrowserWindow.getAllWindows().find(w => !w.isDestroyed());
+
+  const menuTemplate = Menu.buildFromTemplate(getMenuTemplate());
+
+  Menu.setApplicationMenu(menuTemplate);
 
   if (window === undefined) {
     window = await createWindow();
