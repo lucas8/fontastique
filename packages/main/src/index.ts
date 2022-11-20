@@ -1,6 +1,5 @@
 import { app } from 'electron';
 import './security-restrictions';
-import { AutoUpdaterLogger } from './services';
 import { restoreOrCreateWindow } from '/@/mainWindow';
 
 /**
@@ -47,7 +46,6 @@ if (import.meta.env.PROD) {
   app
     .whenReady()
     .then(() => import('electron-updater'))
-    .then(({ autoUpdater }) => new AutoUpdaterLogger(autoUpdater))
-    // TODO: implement toast for new updates
+    .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
     .catch(e => console.error('Failed check updates:', e));
 }
