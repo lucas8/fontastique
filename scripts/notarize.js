@@ -8,12 +8,11 @@ module.exports = async function (context) {
   if (process.platform !== 'darwin') {
     return;
   }
-  console.log('afterSign hook triggered', context);
 
   // Same appId in electron-builder.
-  let appId = 'com.lucasstettner.typescape';
+  const appId = 'com.lucasstettner.typescape';
 
-  let appPath = path.join(context.appOutDir, `${context.packager.appInfo.productFilename}.app`);
+  const appPath = path.join(context.appOutDir, `${context.packager.appInfo.productFilename}.app`);
   if (!fs.existsSync(appPath)) {
     throw new Error(`Cannot find application at: ${appPath}`);
   }
