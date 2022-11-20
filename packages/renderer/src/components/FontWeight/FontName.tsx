@@ -27,10 +27,10 @@ export const FontName = observer<FontNameProps>(({ fontWeight }) => {
         {isHovering ? (
           <motion.div
             key="a"
-            initial={{ opacity: 0, y: -2 }}
+            initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -2 }}
-            transition={{ duration: 0.1 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.05 }}
             style={{ position: 'absolute' }}
           >
             <Text
@@ -48,10 +48,10 @@ export const FontName = observer<FontNameProps>(({ fontWeight }) => {
         ) : (
           <motion.div
             key="b"
-            initial={{ opacity: 0, y: 2 }}
+            initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 2 }}
-            transition={{ duration: 0.1 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.05 }}
             style={{ position: 'absolute' }}
           >
             <Text letterSpacing="0.03" size="body" weight="medium" ellipsis lineHeight="none">

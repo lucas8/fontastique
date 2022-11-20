@@ -12,7 +12,10 @@ const config = {
   mac: {
     target: 'default',
     category: 'public.app-category.utilities',
+    entitlements: 'buildResources/entitlements.mac.plist',
+    entitlementsInherit: 'buildResources/entitlements.mac.plist',
     hardenedRuntime: true,
+    gatekeeperAssess: false,
   },
   afterSign: './scripts/notarize.js',
   files: ['packages/**/dist/**'],
