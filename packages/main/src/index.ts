@@ -1,4 +1,4 @@
-import { app } from 'electron';
+import { app, ipcMain } from 'electron';
 import './security-restrictions';
 import { restoreOrCreateWindow } from '/@/mainWindow';
 
@@ -30,6 +30,12 @@ app.on('window-all-closed', () => {
  * @see https://www.electronjs.org/docs/latest/api/app#event-activate-macos Event: 'activate'.
  */
 app.on('activate', restoreOrCreateWindow);
+
+ipcMain.handle('getFonts', () => {
+  const { getAvailableFontsSync } = require('font-scanner');
+
+  return getAvailableFontsSync();
+});
 
 /**
  * Create the application window when the background process is ready.

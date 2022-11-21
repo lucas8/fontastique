@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import { join } from 'path';
 import { URL } from 'url';
 import { getMenuTemplate } from './utils';
@@ -18,12 +18,6 @@ async function createWindow() {
       webviewTag: false, // The webview tag is not recommended. Consider alternatives like an iframe or Electron's BrowserView. @see https://www.electronjs.org/docs/latest/api/webview-tag#warning
       preload: join(app.getAppPath(), 'packages/preload/dist/index.cjs'),
     },
-  });
-
-  ipcMain.handle('getFonts', () => {
-    const { getAvailableFontsSync } = require('font-scanner');
-
-    return getAvailableFontsSync();
   });
 
   /**
