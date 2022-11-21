@@ -1,7 +1,6 @@
 import { app, BrowserWindow, ipcMain, Menu } from 'electron';
 import { join } from 'path';
 import { URL } from 'url';
-import { getAvailableFontsSync } from 'font-scanner';
 import { getMenuTemplate } from './utils';
 
 async function createWindow() {
@@ -22,6 +21,8 @@ async function createWindow() {
   });
 
   ipcMain.handle('getFonts', () => {
+    const { getAvailableFontsSync } = require('font-scanner');
+
     return getAvailableFontsSync();
   });
 
