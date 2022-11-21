@@ -103,9 +103,9 @@ export const letterSpacing = {
 };
 
 export const fonts = {
-  heading: 'VC Henrietta, "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif',
-  body: 'Hubot-Sans, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
-  mono: 'IBM Plex Mono, "Roboto Mono", Menlo, monospace',
+  heading: '"VC Henrietta", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif',
+  body: '"Hubot-Sans", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+  mono: '"IBM Plex Mono", "Roboto Mono", Menlo, monospace',
 };
 
 export const lineHeights = {
