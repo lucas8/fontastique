@@ -14,8 +14,8 @@ export const container = style({
 });
 
 export const trafficLight = style({
-  width: '12px',
-  height: '12px',
+  width: '10px',
+  height: '10px',
   backgroundColor: vars.colors.textSecondary,
   borderRadius: vars.borderRadii.circle,
 });
