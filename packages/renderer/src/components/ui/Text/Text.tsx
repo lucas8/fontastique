@@ -21,6 +21,7 @@ type TextProps = {
   display?: BoxProps['display'];
   height?: BoxProps['height'];
   className?: BoxProps['className'];
+  contentEditable?: BoxProps['contentEditable'];
 } & styles.Variants;
 
 export const Text = forwardRef(

@@ -25,14 +25,16 @@ export const FontWeight = observer<FontWeightProps>(({ fontWeight }) => {
       </Box>
       <Box paddingX="4">
         <Text
+          contentEditable
           size="heading"
+          className={styles.contentEditable}
           style={{
             fontSize: '24px',
             fontWeight: fontWeight.weight,
             fontFamily: `${fontWeight.postscriptName}, ${vars.fonts.body}`,
           }}
         >
-          Whereas disregard and contempt for human rights have resulted
+          {fontWeight.font?.previewText}
         </Text>
       </Box>
     </Box>

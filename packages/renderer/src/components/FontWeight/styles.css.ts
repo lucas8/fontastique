@@ -1,3 +1,4 @@
+import { style } from '@vanilla-extract/css';
 import { sprinkles } from '~/styles';
 
 export const headerContainer = sprinkles({
@@ -11,4 +12,12 @@ export const headerContainer = sprinkles({
   top: '0',
   paddingX: '2',
   overflow: 'hidden',
+});
+
+export const contentEditable = style({
+  selectors: {
+    '&:focus-visible': {
+      outline: 'none',
+    },
+  },
 });

@@ -8,6 +8,9 @@ export class Font extends Model<FontStore> {
   @observable
   public name = '';
 
+  @observable
+  public previewText = 'The quick brown fox jumps over the lazy dog';
+
   constructor(store: FontStore, fields: Partial<Font> = {}) {
     super(store);
     makeObservable(this);
