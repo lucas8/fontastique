@@ -15,6 +15,7 @@
 - [ ] Search
 - [ ] Export font to css
 - [ ] Add/remove system fonts (requires custom native bindings)
+- [ ] Allow copy/paste functions (add native menu bar controls)
 
 ## Notable Folders:
 - `/packages/renderer` - this is where all of the react client code is stored (mobx models, components, etc)
