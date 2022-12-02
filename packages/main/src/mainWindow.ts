@@ -11,7 +11,7 @@ async function createWindow() {
     titleBarStyle: 'customButtonsOnHover',
     backgroundColor: '#DFD0BF',
     title: 'Typescape',
-    hasShadow: false,
+    hasShadow: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
