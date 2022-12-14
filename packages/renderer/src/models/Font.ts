@@ -8,6 +8,7 @@ export class Font extends Model<FontStore> {
   @observable
   public name = '';
 
+  @observable
   public previewText = 'How vexingly quick daft zebras jump!';
 
   constructor(store: FontStore, fields: Partial<Font> = {}) {
@@ -15,6 +16,11 @@ export class Font extends Model<FontStore> {
     makeObservable(this);
 
     set(this, fields);
+  }
+
+  @action.bound
+  public updatePreviewText(nextPreviewText: string) {
+    this.previewText = nextPreviewText;
   }
 
   @action.bound

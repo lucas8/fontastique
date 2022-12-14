@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { FontWeight as FontWeightModel } from '~/models';
-import { Box, Tag, Text } from '~/components';
+import { Box, Tag } from '~/components';
 import { vars } from '~/styles';
 import * as styles from './styles.css';
 import { getFontWeightName } from '~/utils';
@@ -24,18 +24,16 @@ export const FontWeight = observer<FontWeightProps>(({ fontWeight }) => {
         )}
       </Box>
       <Box paddingX="4">
-        <Text
-          contentEditable
-          size="heading"
-          className={styles.contentEditable}
+        <input
+          type="text"
+          className={styles.fontWeightPreviewInput}
           style={{
-            fontSize: '24px',
             fontWeight: fontWeight.weight,
             fontFamily: `${fontWeight.postscriptName}, ${vars.fonts.body}`,
           }}
-        >
-          {fontWeight.font?.previewText}
-        </Text>
+          onChange={e => fontWeight.font?.updatePreviewText(e.target.value)}
+          value={fontWeight.font?.previewText}
+        />
       </Box>
     </Box>
   );

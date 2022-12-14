@@ -110,6 +110,7 @@ const selectorProperties = defineProperties({
     background: vars.colors,
     borderColor: vars.colors,
     color: vars.colors,
+    outline: ['none', 'auto'],
     outlineColor: vars.colors,
   },
 });
