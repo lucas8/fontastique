@@ -8,6 +8,7 @@ export class Font extends Model<FontStore> {
   @observable
   public name = '';
 
+  @observable
   public previewText = 'How vexingly quick daft zebras jump!';
 
   constructor(store: FontStore, fields: Partial<Font> = {}) {
@@ -15,6 +16,11 @@ export class Font extends Model<FontStore> {
     makeObservable(this);
 
     set(this, fields);
+  }
+
+  @action.bound
+  public updatePreviewText(nextPreviewText: string) {
+    this.previewText = nextPreviewText;
   }
 
   @action.bound
@@ -30,7 +36,7 @@ export class Font extends Model<FontStore> {
   @computed
   public get sortedWeights() {
     return this.weights.sort((a, b) => {
-      // sorted by weight, itallic at the bottom
+      // sorted by weight, italic at the bottom
       return a.weight + (a.italic ? 1 : 0) - (b.weight + (b.italic ? 1 : 0));
     });
   }

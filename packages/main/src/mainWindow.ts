@@ -10,7 +10,7 @@ async function createWindow() {
     height: 540,
     titleBarStyle: 'customButtonsOnHover',
     backgroundColor: '#DFD0BF',
-    title: 'Typescape',
+    title: 'Fontastique',
     hasShadow: true,
     webPreferences: {
       nodeIntegration: false,

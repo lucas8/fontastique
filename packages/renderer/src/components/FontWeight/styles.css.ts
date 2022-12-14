@@ -1,4 +1,3 @@
-import { style } from '@vanilla-extract/css';
 import { sprinkles } from '~/styles';
 
 export const headerContainer = sprinkles({
@@ -14,10 +13,10 @@ export const headerContainer = sprinkles({
   overflow: 'hidden',
 });
 
-export const contentEditable = style({
-  selectors: {
-    '&:focus-visible': {
-      outline: 'none',
-    },
-  },
+export const fontWeightPreviewInput = sprinkles({
+  width: 'full',
+  fontSize: 'heading',
+  background: 'transparent',
+  borderWidth: '0',
+  outline: 'none',
 });

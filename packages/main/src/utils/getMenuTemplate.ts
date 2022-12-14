@@ -10,7 +10,7 @@ export const getMenuTemplate = (): MenuItemConstructorOptions[] => {
       label: name,
       submenu: [
         {
-          label: 'About Typescape',
+          label: 'About Fontastique',
           role: 'about',
         },
         {
