@@ -30,7 +30,7 @@ export class Font extends Model<FontStore> {
   @computed
   public get sortedWeights() {
     return this.weights.sort((a, b) => {
-      // sorted by weight, itallic at the bottom
+      // sorted by weight, italic at the bottom
       return a.weight + (a.italic ? 1 : 0) - (b.weight + (b.italic ? 1 : 0));
     });
   }

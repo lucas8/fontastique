@@ -19,7 +19,7 @@ export const FontWeight = observer<FontWeightProps>(({ fontWeight }) => {
         <FontName fontWeight={fontWeight} />
         {fontWeight.italic && (
           <i>
-            <Tag>itallic</Tag>
+            <Tag>italic</Tag>
           </i>
         )}
       </Box>
