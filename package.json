@@ -1,5 +1,5 @@
 {
-  "name": "typescape",
+  "name": "fontastique",
   "description": "The font browser built for designers.",
   "private": true,
   "main": "packages/main/dist/index.cjs",

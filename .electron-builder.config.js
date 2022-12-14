@@ -3,8 +3,8 @@
  * @see https://www.electron.build/configuration/configuration
  */
 const config = {
-  appId: 'com.lucasstettner.typescape',
-  productName: 'Typescape',
+  appId: 'com.lucasstettner.fontastique',
+  productName: 'Fontastique',
   directories: {
     output: 'dist',
     buildResources: 'buildResources',
@@ -26,7 +26,7 @@ const config = {
     {
       provider: 'github',
       owner: 'lucas8',
-      repo: 'typescape',
+      repo: 'fontastique',
     },
   ],
 };

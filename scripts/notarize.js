@@ -10,7 +10,7 @@ module.exports = async function (context) {
   }
 
   // Same appId in electron-builder.
-  const appId = 'com.lucasstettner.typescape';
+  const appId = 'com.lucasstettner.fontastique';
 
   const appPath = path.join(context.appOutDir, `${context.packager.appInfo.productFilename}.app`);
   if (!fs.existsSync(appPath)) {
