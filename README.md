@@ -12,7 +12,6 @@
 - [x] Browse system fonts
 - [x] Auto update (OSX)
 - [x] Theming
-- [ ] Cache fonts in sql locally
 - [ ] Favorite fonts
 - [ ] Search
 - [ ] Export font to css
